@@ -23,11 +23,6 @@ public class PlayerMove : MonoBehaviour
         StartCoroutine(PlayerMoveRoutine());
     }
 
-    private void Update()
-    {
-        
-    }
-
     IEnumerator PlayerMoveRoutine()
     {
         while (true)
