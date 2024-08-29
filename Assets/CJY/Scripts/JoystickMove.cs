@@ -6,56 +6,57 @@ using UnityEngine.EventSystems;
 
 public class JoystickMove : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
-    public RectTransform frame;
-    public RectTransform handle;
+    public RectTransform frame;  // 조이스틱 테두리
+    public RectTransform handle;  // 조이스틱 핸들
 
-    private float handleRange = 130;
-    private Vector3 input;
+    float handleRange = 130;  // 핸들의 범위
+    Vector3 input;  // 입력 값
 
-    public float Horizontal { get { return input.x; } }
-    public float Vertical { get { return input.y; } }
+    public float Horizontal { get { return input.x; } }  // 좌우이동
+    public float Vertical { get { return input.y; } }  // 상하이동
 
     public void OnDrag(PointerEventData eventData)
     {
-        //RectTransform 내부의 스크린포인트를 로컬포인트로 변환해 주는 메서드입니다.
-        //드래그 중인 스크린 좌표 값을 현재 RectTransform의 드래그 중인 좌표값으로 변환 후
-        //Vector2 값을 localVector변수에 반환합니다. 만약 드래그되어 값이 발생한다면 true이므로
-        //아래 기능을 실행합니다.
+        // RectTransform 내부의 스크린포인트를 로컬포인트로 변환해 주는 메서드
+        // 드래그 중인 스크린 좌표 값을 현재 RectTransform의 드래그 중인 좌표값으로 변환 후
+        // Vector2 값을 localVector변수에 반환, 만약 드래그되어 값이 발생한다면 true이므로
+        // 아래 기능을 실행
 
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            this.gameObject.GetComponent<RectTransform>(), eventData.position,
+            gameObject.GetComponent<RectTransform>(), eventData.position,
             eventData.pressEventCamera, out Vector2 localVector))
         {
-            if (localVector.magnitude < this.handleRange)
+            if (localVector.magnitude < handleRange)
             {
-                this.handle.transform.localPosition = localVector;
+                handle.transform.localPosition = localVector;
             }
-            else   //localVector 값이 handleRange보다 크거다 같다면 값을 handleRange의 값 만큼 고정합니다.
+            else   //localVector 값이 handleRange보다 크거다 같다면 값을 handleRange의 값 만큼 고정
             {
-                this.handle.transform.localPosition = localVector.normalized * this.handleRange;
+                handle.transform.localPosition = localVector.normalized * handleRange;
             }
 
-            this.input = localVector;
+            input = localVector;
         }
 
-        this.SetJoystickColor(true);
+        SetJoystickColor(true);  // 지정된 색으로 변경
     }
 
+    //포인터에서 클릭이 떼어지면 input값과 handle의 위치를 0, 0으로 초기화
     public void OnPointerUp(PointerEventData eventData)
     {
-        this.input = Vector2.zero;
-        this.handle.anchoredPosition = Vector2.zero;
-        //포인터에서 클릭이 떼어지면 input값과 handle의 위치를 0, 0으로 초기화합니다.
+        input = Vector2.zero;
+        handle.anchoredPosition = Vector2.zero;
 
-        this.SetJoystickColor(false);
+        SetJoystickColor(false);  // 기본 색으로 변경
     }
 
+    //포인터가 클릭되면 OnDrag 메서드가 실행
     public void OnPointerDown(PointerEventData eventData)
     {
-        this.OnDrag(eventData);
-        //포인터가 클릭되면 OnDrag 메서드가 실행됩니다.
+        OnDrag(eventData);
     }
 
+    // 포인터 클릭 여부에 따른 조이스틱 색상 변경
     private void SetJoystickColor(bool isOnDraged)
     {
         Color pointedFrameColor;
@@ -72,7 +73,7 @@ public class JoystickMove : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoi
             pointedHandleColor = new Color(255, 255, 255, 0.6f);
         }
 
-        this.frame.gameObject.GetComponent<Image>().color = pointedFrameColor;
-        this.handle.gameObject.GetComponent<Image>().color = pointedHandleColor;
+        frame.gameObject.GetComponent<Image>().color = pointedFrameColor;
+        handle.gameObject.GetComponent<Image>().color = pointedHandleColor;
     }
 }
