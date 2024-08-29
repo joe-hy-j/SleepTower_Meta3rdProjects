@@ -1,8 +1,8 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;   // http Åë½ÅÀ» À§ÇÑ ³×ÀÓ ½ºÆäÀÌ½º
-using System.Text;      // json, csv°°Àº ¹®¼­ ÇüÅÂÀÇ ÀÎÄÚµù(UTF-8)À» À§ÇÑ ³×ÀÓ ½ºÆäÀÌ½º
+using UnityEngine.Networking;   // http í†µì‹ ì„ ìœ„í•œ ë„¤ì„ ìŠ¤í˜ì´ìŠ¤
+using System.Text;      // json, csvê°™ì€ ë¬¸ì„œ í˜•íƒœì˜ ì¸ì½”ë”©(UTF-8)ì„ ìœ„í•œ ë„¤ì„ ìŠ¤í˜ì´ìŠ¤
 using UnityEngine.UI;
 using System;
 using System.IO;
@@ -20,28 +20,28 @@ public class HttpManager : MonoBehaviour
         StartCoroutine(GetRequest(url));
     }
 
-    // Get Åë½Å ÄÚ·çÆ¾ ÇÔ¼ö
+    // Get í†µì‹  ì½”ë£¨í‹´ í•¨ìˆ˜
     IEnumerator GetRequest(string url)
     {
-        // http Get Åë½Å ÁØºñ¸¦ ÇÑ´Ù.
+        // http Get í†µì‹  ì¤€ë¹„ë¥¼ í•œë‹¤.
         UnityWebRequest request = UnityWebRequest.Get(url);
 
-        // ¼­¹ö¿¡ Get ¿äÃ»À» ÇÏ°í, ¼­¹ö·ÎºÎÅÍ ÀÀ´äÀÌ ¿Ã ¶§±îÁö ´ë±âÇÑ´Ù.
+        // ì„œë²„ì— Get ìš”ì²­ì„ í•˜ê³ , ì„œë²„ë¡œë¶€í„° ì‘ë‹µì´ ì˜¬ ë•Œê¹Œì§€ ëŒ€ê¸°í•œë‹¤.
         yield return request.SendWebRequest();
 
-        // ¸¸ÀÏ, ¼­¹ö·ÎºÎÅÍ ¿Â ÀÀ´äÀÌ ¼º°ø(200)ÀÌ¶ó¸é...
+        // ë§Œì¼, ì„œë²„ë¡œë¶€í„° ì˜¨ ì‘ë‹µì´ ì„±ê³µ(200)ì´ë¼ë©´...
         if (request.result == UnityWebRequest.Result.Success)
         {
-            // ÀÀ´ä¹ŞÀº µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÑ´Ù.
+            // ì‘ë‹µë°›ì€ ë°ì´í„°ë¥¼ ì¶œë ¥í•œë‹¤.
             string response = request.downloadHandler.text;
 
             print(response);
             text_response.text = response;
         }
-        // ±×·¸Áö ¾Ê´Ù¸é(400, 404 etc)...
+        // ê·¸ë ‡ì§€ ì•Šë‹¤ë©´(400, 404 etc)...
         else
         {
-            // ¿¡·¯ ³»¿ëÀ» Ãâ·ÂÇÑ´Ù.
+            // ì—ëŸ¬ ë‚´ìš©ì„ ì¶œë ¥í•œë‹¤.
             print(request.error);
             text_response.text = request.error;
         }
@@ -55,18 +55,18 @@ public class HttpManager : MonoBehaviour
 
     IEnumerator GetJsonImageRequest(string url)
     {
-        // url·ÎºÎÅÍ GetÀ¸·Î ¿äÃ»À» ÁØºñÇÑ´Ù.
+        // urlë¡œë¶€í„° Getìœ¼ë¡œ ìš”ì²­ì„ ì¤€ë¹„í•œë‹¤.
         UnityWebRequest request = UnityWebRequest.Get(url);
 
-        // ÁØºñµÈ ¿äÃ»À» ¼­¹ö¿¡ Àü´ŞÇÏ°í ÀÀ´äÀÌ ¿Ã¶§±îÁö ±â´Ù¸°´Ù.
+        // ì¤€ë¹„ëœ ìš”ì²­ì„ ì„œë²„ì— ì „ë‹¬í•˜ê³  ì‘ë‹µì´ ì˜¬ë•Œê¹Œì§€ ê¸°ë‹¤ë¦°ë‹¤.
         yield return request.SendWebRequest();
 
-        // ¸¸ÀÏ, ÀÀ´äÀÌ ¼º°øÀÌ¶ó¸é...
+        // ë§Œì¼, ì‘ë‹µì´ ì„±ê³µì´ë¼ë©´...
         if (request.result == UnityWebRequest.Result.Success)
         {
-            // ÅØ½ºÆ®¸¦ ¹Ş´Â´Ù.
+            // í…ìŠ¤íŠ¸ë¥¼ ë°›ëŠ”ë‹¤.
             string result = request.downloadHandler.text;
-            // ÀÀ´ä ¹ŞÀº json µ¥ÀÌÅÍ¸¦ RequestImage ±¸Á¶Ã¼ ÇüÅÂ·Î ÆÄ½ÌÇÑ´Ù.
+            // ì‘ë‹µ ë°›ì€ json ë°ì´í„°ë¥¼ RequestImage êµ¬ì¡°ì²´ í˜•íƒœë¡œ íŒŒì‹±í•œë‹¤.
             RequestImage reqImageData = JsonUtility.FromJson<RequestImage>(result);
 
             //byte[] binaries = Encoding.UTF8.GetBytes(reqImageData.img);
@@ -76,23 +76,23 @@ public class HttpManager : MonoBehaviour
             {
                 Texture2D texture = new Texture2D(2, 2);
 
-                // byte ¹è¿­·Î µÈ raw µ¥ÀÌÅÍ¸¦ ÅØ½ºÃÄ ÇüÅÂ·Î º¯È¯ÇØ¼­ texture2D ÀÎ½ºÅÏ½º·Î º¯È¯ÇÑ´Ù.
+                // byte ë°°ì—´ë¡œ ëœ raw ë°ì´í„°ë¥¼ í…ìŠ¤ì³ í˜•íƒœë¡œ ë³€í™˜í•´ì„œ texture2D ì¸ìŠ¤í„´ìŠ¤ë¡œ ë³€í™˜í•œë‹¤.
                 texture.LoadImage(binaries);
                 
             }
 
         }
-        // ±×·¸Áö ¾Ê´Ù¸é...
+        // ê·¸ë ‡ì§€ ì•Šë‹¤ë©´...
         else
         {
-            // ¿¡·¯ ³»¿ëÀ» text_response¿¡ Àü´ŞÇÑ´Ù.
+            // ì—ëŸ¬ ë‚´ìš©ì„ text_responseì— ì „ë‹¬í•œë‹¤.
             text_response.text = request.responseCode + ": " + request.error;
             Debug.LogError(request.responseCode + ": " + request.error);
         }
 
     }
 
-    // ¼­¹ö¿¡ Json µ¥ÀÌÅÍ¸¦ PostÇÏ´Â ÇÔ¼ö
+    // ì„œë²„ì— Json ë°ì´í„°ë¥¼ Postí•˜ëŠ” í•¨ìˆ˜
     public void PostJson()
     {
         StartCoroutine(PostJsonRequest(url));
@@ -100,7 +100,7 @@ public class HttpManager : MonoBehaviour
 
     IEnumerator PostJsonRequest(string url)
     {
-        // »ç¿ëÀÚÀÇ ÀÔ·Â Á¤º¸¸¦ Json µ¥ÀÌÅÍ·Î º¯È¯ÇÏ±â
+        // ì‚¬ìš©ìì˜ ì…ë ¥ ì •ë³´ë¥¼ Json ë°ì´í„°ë¡œ ë³€í™˜í•˜ê¸°
         JoinUserData userData = new JoinUserData();
         userData.id = Convert.ToInt32(userInputs[0].text);
         userData.password = userInputs[1].text;
@@ -109,18 +109,18 @@ public class HttpManager : MonoBehaviour
         string userJsonData = JsonUtility.ToJson(userData, true);
         byte[] jsonBins = Encoding.UTF8.GetBytes(userJsonData);
 
-        // Post¸¦ ÇÏ±â À§ÇÑ ÁØºñ¸¦ ÇÑ´Ù.
+        // Postë¥¼ í•˜ê¸° ìœ„í•œ ì¤€ë¹„ë¥¼ í•œë‹¤.
         UnityWebRequest request = new UnityWebRequest(url, "POST");
         request.SetRequestHeader("Content-Type", "application/json");
         request.uploadHandler = new UploadHandlerRaw(jsonBins);
         request.downloadHandler = new DownloadHandlerBuffer();
 
-        // ¼­¹ö¿¡ Post¸¦ Àü¼ÛÇÏ°í ÀÀ´äÀÌ ¿Ã ¶§±îÁö ±â´Ù¸°´Ù.
+        // ì„œë²„ì— Postë¥¼ ì „ì†¡í•˜ê³  ì‘ë‹µì´ ì˜¬ ë•Œê¹Œì§€ ê¸°ë‹¤ë¦°ë‹¤.
         yield return request.SendWebRequest();
 
         if (request.result == UnityWebRequest.Result.Success)
         {
-            // ´Ù¿î·Îµå ÇÚµé·¯¿¡¼­ ÅØ½ºÆ® °ªÀ» ¹Ş¾Æ¼­ UI¿¡ Ãâ·ÂÇÑ´Ù.
+            // ë‹¤ìš´ë¡œë“œ í•¸ë“¤ëŸ¬ì—ì„œ í…ìŠ¤íŠ¸ ê°’ì„ ë°›ì•„ì„œ UIì— ì¶œë ¥í•œë‹¤.
             string response = request.downloadHandler.text;
             text_response.text = response;
             Debug.LogWarning(response);
