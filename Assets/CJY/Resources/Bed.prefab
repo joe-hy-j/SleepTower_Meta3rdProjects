@@ -336,8 +336,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.00000047683716}
+  m_Size: {x: 1, y: 1, z: 22}
+  m_Center: {x: 0, y: 0, z: -10.5}
 --- !u!1 &3318232565086564567
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +432,6 @@ GameObject:
   - component: {fileID: 1217126148259610168}
   - component: {fileID: 7226963615313633732}
   - component: {fileID: 534614144336445904}
-  - component: {fileID: 7732554981081804389}
   m_Layer: 0
   m_Name: Mattress
   m_TagString: Untagged
@@ -505,27 +504,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7732554981081804389
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966087781350314450}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.99999994, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4063148392777109604
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +515,6 @@ GameObject:
   - component: {fileID: 4663083423250663251}
   - component: {fileID: 8756101501980424776}
   - component: {fileID: 7944661395248721206}
-  - component: {fileID: 2465002543466844212}
   m_Layer: 0
   m_Name: Bottom
   m_TagString: Untagged
@@ -610,27 +587,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2465002543466844212
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4063148392777109604}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4730271509304999441
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5800694280997124376}
   - component: {fileID: 9138002773223078438}
+  - component: {fileID: 2452330419471460760}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Untagged
@@ -688,6 +645,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7194145, y: 1, z: 2.2}
   m_Center: {x: -0.54332817, y: 0, z: 0}
+--- !u!114 &2452330419471460760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730271509304999441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e317213c6585df4d9636081885c5081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn_sleep: {fileID: 0}
+  btn_wakeUp: {fileID: 0}
 --- !u!1 &6216889896876867217
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +670,6 @@ GameObject:
   - component: {fileID: 5608629939349011642}
   - component: {fileID: 3099026380641725461}
   - component: {fileID: 349477290181561075}
-  - component: {fileID: 5643928217515837780}
   m_Layer: 0
   m_Name: Leg
   m_TagString: Untagged
@@ -772,24 +742,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5643928217515837780
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6216889896876867217}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.99999994, z: 1}
-  m_Center: {x: 0, y: 0.000000029802322, z: 0}
