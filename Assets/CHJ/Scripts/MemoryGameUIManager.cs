@@ -1,18 +1,62 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MemoryGameUIManager : MemoryGameManager
 {
     GameObject[,] blocks;
     public GameObject blockFactory;
-    private void Start()
+
+    public TMP_InputField inputField;
+    public Button button;
+    public TextMeshProUGUI winText;
+    
+    //user가 입력을 할 수 있는 상황인지 확인
+    bool canUserInput = false;
+
+    public void StartGame()
     {
-        StartGame();
+        InitializeGame();
+        CreateQuestion();
+        SetQuestionCount(Convert.ToInt32(inputField.text));
+        inputField.gameObject.SetActive(false);
+        button.gameObject.SetActive(false);
+        winText.gameObject.SetActive(false);
     }
-    void StartGame()
+
+
+    private void Update()
     {
-        base.StartGame();
+        if (canUserInput)
+        {
+            if (CheckAnswer())
+            {
+                canUserInput = false;
+                if (score < questionCount)
+                {
+                    CreateQuestion();
+                }
+                else
+                {
+                    EndGame();
+                }
+            }
+        }
+    }
+
+    void InitializeGame()
+    {
+        base.InitializeGame();
+        if (blocks != null)
+        {
+            foreach (var block in blocks)
+            {
+                Destroy(block);
+            }
+        }
         blocks = new GameObject[3, 3];
         for (int i = 0; i < blocks.GetLength(0); i++)
         {
@@ -22,16 +66,15 @@ public class MemoryGameUIManager : MemoryGameManager
                 blocks[i,j].GetComponent<BlockClickedAction>().SetColumnAndRow(i, j);
             }
         }
-
-        CreateQuestion();
     }
 
     void CreateQuestion()
     {
         base.CreateQuestion();
-
+        print("CreateQuestion");
         StartCoroutine(QuestioinShowProcess(3.0f));
     }
+
     public void GetUserInput(int column, int row)
     {
         base.GetUserInput(column, row);
@@ -39,8 +82,19 @@ public class MemoryGameUIManager : MemoryGameManager
             blocks[column, row].GetComponent<Renderer>().material.color = Color.red;
         else
             blocks[column, row].GetComponent<Renderer>().material.color = Color.white;
+        canUserInput = true;
 
     }
+
+    void EndGame()
+    {
+        base.EndGame();
+
+        inputField.gameObject.SetActive(true);
+        button.gameObject.SetActive(true);
+        winText.gameObject.SetActive(true);
+    }
+
     float ColomnToXPos(int column)
     {
         return (column - 1) * 1.3f;
@@ -53,12 +107,15 @@ public class MemoryGameUIManager : MemoryGameManager
 
     IEnumerator QuestioinShowProcess(float showingTime)
     {
-        for(int i =0; i< blocks.GetLength(0); i++)
+        for (int i = 0; i < blocks.GetLength(0); i++)
         {
-            for(int j = 0;j < blocks.GetLength(1); j++)
+            for (int j = 0; j < blocks.GetLength(1); j++)
             {
-                if (question[i,j] == true)
+                if (question[i, j] == true)
                     blocks[i, j].GetComponent<Renderer>().material.color = Color.red;
+                else
+                    blocks[i, j].GetComponent<Renderer>().material.color = Color.white;
+                blocks[i, j].GetComponent<BlockClickedAction>().isActive = false;
             }
         }
 
@@ -69,10 +126,11 @@ public class MemoryGameUIManager : MemoryGameManager
             for (int j = 0; j < blocks.GetLength(1); j++)
             {
                 if (question[i, j] == true)
+                {
                     blocks[i, j].GetComponent<Renderer>().material.color = Color.white;
+                }
+                blocks[i, j].GetComponent<BlockClickedAction>().isActive = true;
             }
         }
-
     }
-
 }

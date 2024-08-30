@@ -6,7 +6,7 @@ public class BlockClickedAction : MonoBehaviour
 {
     public int blockColumn;
     public int blockRow;
-
+    public bool isActive = false;
     
     MemoryGameUIManager gm;
 
@@ -20,7 +20,9 @@ public class BlockClickedAction : MonoBehaviour
     }
     public void OnClick()
     {
-        print("Onclicked");
-        gm.GetUserInput(blockColumn, blockRow);
+        if (isActive)
+        {
+            gm.GetUserInput(blockColumn, blockRow);
+        }
     }
 }

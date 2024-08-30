@@ -15,17 +15,22 @@ public class MemoryGameManager : MonoBehaviour
     //질문 맞춘 갯수
     protected int score = 0;
 
-    protected void StartGame()
+    //낼 문제 갯수
+    protected int questionCount = 3;
+    protected void InitializeGame()
     {
-        CreateQuestion();
         question = new bool[3, 3];
         answer = new bool[3, 3];
+        score = 0;
     }
 
     protected void CreateQuestion()
     {
         //question 배열을 모두 false로 초기화시킨다.
         question = new bool[3,3];
+        //answer 배열을 모두 false로 초기화시킨다.
+        answer = new bool[3, 3];
+
         int createdBlock = 0;
 
         while(createdBlock < questionBlockCount)
@@ -41,10 +46,13 @@ public class MemoryGameManager : MonoBehaviour
         }
     }
 
+    protected void EndGame()
+    {
+        print("You win!");
+    }
     public void GetUserInput(int column, int row)
     {
         answer[column, row] = !answer[column, row];
-        CheckAnswer();
     }
     public bool CheckAnswer()
     {
@@ -57,7 +65,11 @@ public class MemoryGameManager : MonoBehaviour
             }
         }
         score++;
-        print("Win!");
         return true;
+    }
+
+    public void SetQuestionCount(int count)
+    {
+        questionCount = count;
     }
 }
