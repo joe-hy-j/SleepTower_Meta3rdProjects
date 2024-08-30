@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,17 +32,7 @@ public class AlarmManager : MonoBehaviour
         get { return alarmList.Count; }
     }
 
-    void Update()
-    {
-        for(int i = 0; i<alarmCount; i++)
-        {
-            if(TimeManager.Time.Hour == alarmList[i].hour && TimeManager.Time.Minute == alarmList[i].minute)
-            {
-                //알람을 울린다
-                print("알람이 울렸습니다! : " + alarmList[i].ToString());
-            }
-        }
-    }
+    //public event EventHandler onAlarmCall;
 
     /// <summary>
     /// 알람을 추가합니다.
@@ -77,6 +68,15 @@ public class AlarmManager : MonoBehaviour
     {
         alarmList.RemoveAt(alarmIndex);
     }
+
+    public void DeleteAllAlarm()
+    {
+        for (int i = 0; i < alarmList.Count; i++)
+        {
+            alarmList.RemoveAt(0);
+        }
+
+    }
     /// <summary>
     /// 알람의 인덱스를 사용하여 알람 정보를 받습니다.
     /// </summary>
@@ -104,5 +104,18 @@ public class AlarmManager : MonoBehaviour
         alarmList[index].minute = newMinue;
         alarmList[index].name = newName;
         alarmList[index].isActive = isActive;
+    }
+
+    public bool CheckAlarmOn(int hour, int minute)
+    {
+        for (int i = 0; i < alarmCount; i++)
+        {
+            if (hour == alarmList[i].hour && minute == alarmList[i].minute)
+            {
+                //onAlarmCall.Invoke(this, EventArgs.Empty);
+                return true;
+            }
+        }
+        return false;
     }
 }
