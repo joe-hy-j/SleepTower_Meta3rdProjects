@@ -35,7 +35,7 @@ public class ConnectSever : MonoBehaviourPunCallbacks
     public void JoinLobby()
     {
         // 닉네임 설정
-        PhotonNetwork.NickName = "ORR_Studio";
+        PhotonNetwork.NickName = "Block_Stand";
         // 기본 Lobby 입장
         PhotonNetwork.JoinLobby();
 
@@ -87,6 +87,6 @@ public class ConnectSever : MonoBehaviourPunCallbacks
 
         //GameScene으로 이동 --- 이러면 방으로 가는것이고
 
-       // PhotonNetwork.LoadLevel("GameScene"); // 방으로 가는것 , 아직 덜 구현
+        PhotonNetwork.LoadLevel("GameScene"); // 방으로 가는것 , 아직 덜 구현
     }
 }

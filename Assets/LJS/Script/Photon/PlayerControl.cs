@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviourPun
 {
@@ -13,6 +14,9 @@ public class PlayerControl : MonoBehaviourPun
 
     float jumpPower = 3;
 
+    //닉네임 가져오기
+
+    public Text nickName;
 
 
 
@@ -23,6 +27,9 @@ public class PlayerControl : MonoBehaviourPun
         Cursor.lockState = CursorLockMode.Locked;
 
         cc = GetComponent<CharacterController>();
+
+        //nickName설정
+        nickName.text = photonView.Owner.NickName;
 
     }
 
