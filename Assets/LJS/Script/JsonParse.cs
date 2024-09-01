@@ -31,7 +31,7 @@ public struct UserDataList
 }
 
 
-public class JsonParser : MonoBehaviour
+public class JsonParse : MonoBehaviour
 {
     public Text text_result;
     public UserData readUserData;
@@ -39,23 +39,23 @@ public class JsonParser : MonoBehaviour
     void Start()
     {
         #region json 데이터를 만들고 저장하기
-        //// 구조체 인스턴스를 만든다.
-        //UserData user1 = new UserData("박원석", 44, "강사", true);
-        ////user1.name = "박원석";
-        ////user1.age = 44;
-        ////user1.job = "강사";
-        ////user1.isMan = true;
+        // 구조체 인스턴스를 만든다.
+        UserData user1 = new UserData("이준승", 28, "팀원", true);
+        //user1.name = "박원석";
+        //user1.age = 44;
+        //user1.job = "강사";
+        //user1.isMan = true;
         //UserData user2 = new UserData("김영호", 27, "반장", true);
 
-        //// 구조체 데이터를 json 형태로 변환한다.
-        //string jsonUser1 = JsonUtility.ToJson(user1, true);
+        // 구조체 데이터를 json 형태로 변환한다.
+        string jsonUser1 = JsonUtility.ToJson(user1, true);
         //string jsonUser2 = JsonUtility.ToJson(user2, true);
 
-        //print(jsonUser1);
+        print(jsonUser1);
         //print(jsonUser2);
-        //text_result.text = jsonUser1 + "\n" + jsonUser2;
+        text_result.text = jsonUser1 + "\n";
 
-        //SaveJsonData(jsonUser1, Application.dataPath, "박원석.json");
+        SaveJsonData(jsonUser1, Application.dataPath, "박원석.json");
         //SaveJsonData(jsonUser2, Application.dataPath, "반장.json");
         #endregion
 
