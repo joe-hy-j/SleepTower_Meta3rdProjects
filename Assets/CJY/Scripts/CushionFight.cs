@@ -8,19 +8,9 @@ public class CushionFight : MonoBehaviour
     public Transform throwPos;  // 던질 위치
     
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void CushionThrow()
     {
-        // 베게 프리팹을 던질 위치, 자신의 회전 값 에서 생성한다.
+        // 베게 프리팹을 던질 위치에서 자신의 회전 값에 맞게 생성한다.
         Instantiate(cushion, throwPos.position, transform.rotation);
     }
 }

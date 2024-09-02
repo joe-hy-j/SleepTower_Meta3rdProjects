@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     public float moveSpeed = 5;  // 플레이어 이동속도
     Joystick joystick;  // 조작할 조이스틱
-    CharacterController cc;
+    CharacterController cc;  // CharacterController 컴포넌트 지정변수
 
     float gravity = -9.8f;  // 중력
     float yVelocity;  // y속력
@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         joystick = FindObjectOfType<Joystick>();  // 조이스틱 찾아서 지정
-        cc = GetComponent<CharacterController>();
+        cc = GetComponent<CharacterController>();  // cc에 자신의 CharacterController 컴포넌트를 지정한다.
     }
 
     private void Update()
@@ -30,8 +30,9 @@ public class PlayerMove : MonoBehaviour
             {
                 yVelocity = 0;
             }
+
             yVelocity += gravity * Time.deltaTime;  // 중력구현
-            dir.y = yVelocity;  // 현재 방향의 아래쪽으로 중력 작용
+            dir.y = yVelocity;  // 현재 방향의 아래쪽으로 중력의 방향 지정
 
             // CharacterController를 이용한 이동
             cc.Move(dir * moveSpeed * Time.deltaTime);

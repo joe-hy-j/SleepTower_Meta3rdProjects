@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameRoomManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class GameRoomManager : MonoBehaviour
 
     void Start()
     {
-        isSleepAll = false;
+        isSleepAll = false;  // 변수 초기화
     }
 
     void Update()
@@ -23,15 +24,15 @@ public class GameRoomManager : MonoBehaviour
         {
             isSleepAll = true;  // 필요한 인원수 충족
 
-            // 현재 자는 인원 카운트가 필요 인원 수를 초과할 경우 한계치 조정
+            // 현재 자는 인원 카운트가 필요 인원 수를 초과할 경우 한계치 보정
             if (sleepCount > needSleepCount)
             {
                 sleepCount = needSleepCount;
             }
         }
+        // 현재 자는 인원 수가 0 보다 작아질 경우 0 으로 보정
         else
         {
-            // 현재 자는 인원 카운트가 0 보다 작어질 경우 0 으로 조정
             if (sleepCount < 0)
             {
                 sleepCount = 0;
@@ -61,13 +62,19 @@ public class GameRoomManager : MonoBehaviour
     // 알람 시간 설정 완료
     public void TimerConfirm()
     {
-
+        
     }
 
     // 알람 UI
     public void StopTimer()
     {
-        isSleepAll = false;
+        isSleepAll = false;  // 
         img_TimerUI.SetActive(false);  // 알람 UI 비활성화
+    }
+
+    // 방 나가기 버튼
+    public void ExitRoom()
+    {
+        //SceneManager.LoadScene();
     }
 }
