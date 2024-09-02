@@ -11,12 +11,19 @@ using UnityEditor;
 public class HttpManager : MonoBehaviour
 {
     public string url;
-    public Text text_response;    
+    public Text text_response;
+    public RawImage img_response;
+    public Button btn_get;
+    public Button btn_getImage;
+    public Button btn_getJson;
+    public Button btn_postJson;
+    public Button btn_postImage;
     public List<InputField> userInputs = new List<InputField>();
     public Toggle freeUser;
 
     public void Get()
     {
+        btn_get.interactable = false;
         StartCoroutine(GetRequest(url));
     }
 
@@ -46,10 +53,50 @@ public class HttpManager : MonoBehaviour
             text_response.text = request.error;
         }
 
+        btn_get.interactable = true;
+    }
+
+    public void GetImage()
+    {
+        btn_getImage.interactable = false;
+        StartCoroutine(GetImageRequest(url));
+    }
+
+    // 이미지 파일을 Get으로 받는 함수
+    IEnumerator GetImageRequest(string url)
+    {
+        // get(Texture) 통신을 준비한다.
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+
+        // 서버에 요청을 하고, 응답이 있을 때까지 기다린다.
+        yield return request.SendWebRequest();
+
+        // 만일, 응답이 성공이라면...
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            // 받은 텍스쳐 데이터를 Texture2D 변수에 받아놓는다.
+            Texture2D response = DownloadHandlerTexture.GetContent(request);
+
+            // Texture2D 데이터를 img_response의 texture 값으로 넣어눈다.
+            img_response.texture = response;
+
+            // text_response에 성공 코드 번호를 출력한다.
+            text_response.text = "성공 - " + request.responseCode.ToString();
+        }
+        // 그렇지 않다면...
+        else
+        {
+            // 에러 내용을 text_response에 출력한다.
+            print(request.error);
+            text_response.text = request.error;
+        }
+
+        btn_getImage.interactable = true;
     }
 
     public void GetJson()
-    {   
+    {
+        btn_getJson.interactable = false;
         StartCoroutine(GetJsonImageRequest(url));
     }
 
@@ -78,7 +125,8 @@ public class HttpManager : MonoBehaviour
 
                 // byte 배열로 된 raw 데이터를 텍스쳐 형태로 변환해서 texture2D 인스턴스로 변환한다.
                 texture.LoadImage(binaries);
-                
+                img_response.texture = texture;
+
             }
 
         }
@@ -90,11 +138,13 @@ public class HttpManager : MonoBehaviour
             Debug.LogError(request.responseCode + ": " + request.error);
         }
 
+        btn_getJson.interactable = true;
     }
 
     // 서버에 Json 데이터를 Post하는 함수
     public void PostJson()
     {
+        btn_postJson.interactable = false;
         StartCoroutine(PostJsonRequest(url));
     }
 
@@ -130,20 +180,61 @@ public class HttpManager : MonoBehaviour
             text_response.text = request.error;
             Debug.LogError(request.error);
         }
+
+        btn_postJson.interactable = true;
     }
 
-    [System.Serializable]
-    public struct RequestImage
+    public void PostImage()
     {
-        public string img;
+        btn_postImage.interactable = false;
+        StartCoroutine(PostImageRequest(""));
     }
 
-    [System.Serializable]
-    public struct JoinUserData
+    IEnumerator PostImageRequest(string url)
     {
-        public int id;
-        public string password;
-        public string nickName;
-        public bool freeAccount;
+        //string path = "D:/UnityProjects/TPS/Assets/Materials/Icon.png";
+        string path = EditorUtility.OpenFilePanel("이미지 파일 찾기", "D:/", "png, jpg, bmp");
+
+        // 바이트 배열로 데이터를 읽어올 때
+        byte[] imageBinaries = File.ReadAllBytes(path);
+
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        request.SetRequestHeader("Content-Type", "image/png");
+        //request.SetRequestHeader("Content-Type", "multipart/form-data");
+        request.uploadHandler = new UploadHandlerRaw(imageBinaries);
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            string response = request.downloadHandler.text;
+            text_response.text = response;
+            print(response);
+        }
+        else
+        {
+            text_response.text = $"{request.responseCode} - {request.error}";
+            Debug.LogError($"{request.responseCode} - {request.error}");
+        }
+
+        btn_postImage.interactable = true;
     }
+
+}
+
+
+[System.Serializable]
+public struct RequestImage
+{
+    public string img;
+}
+
+[System.Serializable]
+public struct JoinUserData
+{
+    public int id;
+    public string password;
+    public string nickName;
+    public bool freeAccount;
 }
