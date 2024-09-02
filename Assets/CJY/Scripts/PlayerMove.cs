@@ -4,48 +4,40 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float moveSpeed = 5;
-
-    JoystickMove joystickMove;
+    public float moveSpeed = 5;  // 플레이어 이동속도
+    Joystick joystick;  // 조작할 조이스틱
     CharacterController cc;
 
-    // 중력
-    float gravity = -9.8f;
-    // y 속력
-    float yVelocity;
+    float gravity = -9.8f;  // 중력
+    float yVelocity;  // y속력
 
 
-    void Start()
+    private void Start()
     {
-        joystickMove = GameObject.FindObjectOfType<JoystickMove>();
+        joystick = FindObjectOfType<Joystick>();  // 조이스틱 찾아서 지정
         cc = GetComponent<CharacterController>();
-
-        StartCoroutine(PlayerMoveRoutine());
     }
 
     private void Update()
     {
-        
-    }
-
-    IEnumerator PlayerMoveRoutine()
-    {
-        while (true)
+        // 조이스틱에 상하/좌우로 움직임이 있을 경우
+        if (joystick.Vertical != 0 || joystick.Horizontal != 0)
         {
-            //JoystickMove에서 반환 받은 horizontal, vetical값을 사용하여 캐릭터를 이동시킵니다.
-            Vector3 dir = new Vector3(joystickMove.Horizontal, 0, joystickMove.Vertical);
-            dir = transform.TransformDirection(dir);
-            dir.Normalize();
+            Vector3 dir = transform.forward;  // 자신의 앞쪽 방향으로
 
+            // 지상에 닿아있을 경우 yVelocity값 초기화
             if (cc.isGrounded)
             {
                 yVelocity = 0;
             }
-            yVelocity += gravity * Time.deltaTime;
-            dir.y = yVelocity;
+            yVelocity += gravity * Time.deltaTime;  // 중력구현
+            dir.y = yVelocity;  // 현재 방향의 아래쪽으로 중력 작용
 
+            // CharacterController를 이용한 이동
             cc.Move(dir * moveSpeed * Time.deltaTime);
-            yield return null;
+
+            // 조이스틱의 상하좌우 이동 값을 자신의 Y축 회전 값에 적용
+            transform.rotation = Quaternion.Euler(0, Mathf.Atan2(joystick.Horizontal, joystick.Vertical) * Mathf.Rad2Deg, 0);
         }
     }
 }
