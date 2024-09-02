@@ -29,6 +29,9 @@ public class PlayerControl : MonoBehaviourPun
     Quaternion receiveRot;
     // 보정 속력
     public float lerpSpeed = 50;
+    //NicName Text 를 가져오자
+    public Text nickName;
+
 
     // animator
     Animator anim;
@@ -47,6 +50,9 @@ public class PlayerControl : MonoBehaviourPun
         {
             // 마우스 잠그자.
             Cursor.lockState = CursorLockMode.Locked;
+
+            //nickName 설정
+            nickName.text = photonView.Owner.NickName;
         }
 
         // 캐릭터 컨트롤러 가져오자.
