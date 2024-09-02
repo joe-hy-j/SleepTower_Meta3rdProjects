@@ -20,7 +20,7 @@ public class Alarm
     }
     public override string ToString()
     {
-        return hour.TimeToPrettyString() +":"+minute.TimeToPrettyString();
+        return (hour%12).TimeToPrettyString() +" : "+minute.TimeToPrettyString();
     }
 }
 

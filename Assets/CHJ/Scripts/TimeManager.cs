@@ -21,7 +21,7 @@ namespace JHJ
 public class TimeManager : MonoBehaviour
 {
     
-
+    
     public int Year
     {
         get; private set;
@@ -120,5 +120,10 @@ public class TimeManager : MonoBehaviour
     void PrintCurrentTime()
     {
         print("year: "+Year + " month: "+Month + " day: "+Day+" Hour: "+Hour+" Minute: "+Minute+" Seconds: " + Second);
+    }
+
+    int Get12Hours()
+    {
+        return Hour % 12;
     }
 }
