@@ -1,3 +1,4 @@
+using JHJ;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ public class Alarm
     }
     public override string ToString()
     {
-        return hour +":"+minute;
+        return hour.TimeToPrettyString() +":"+minute.TimeToPrettyString();
     }
 }
 

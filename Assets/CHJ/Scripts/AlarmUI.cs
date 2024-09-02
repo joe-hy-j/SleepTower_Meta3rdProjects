@@ -63,7 +63,9 @@ public class AlarmUI : MonoBehaviour
             alarmUI.SetActive(false);
         }
     }
-    
+    /// <summary>
+    /// 버튼을 통해서 호출하는 함수입니다.
+    /// </summary>
     public void AddAlarm()
     {
         //원래 있던 알람을 없앱니다.
@@ -71,7 +73,9 @@ public class AlarmUI : MonoBehaviour
         //alarm manager에서 alarm을 설정합니다.
         alarmManager.SetAlarm(Convert.ToInt32(hourInput.text), Convert.ToInt32(minuteInput.text));
     }
-
+    /// <summary>
+    /// 알람을 끄는 함수입니다. 버튼의 OnClick을 통해 호출하는 함수입니다
+    /// </summary>
     public void DisableAlarm()
     {
         offAlarmUI.Invoke(this, EventArgs.Empty);

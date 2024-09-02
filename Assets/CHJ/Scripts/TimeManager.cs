@@ -2,8 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
+namespace JHJ
+{
+    public static class TimeExtension
+    {
+        public static string TimeToPrettyString(this int number)
+        {
+            if (number < 10)
+                return "0" + number.ToString();
+            else
+                return number.ToString();
+        }
+    }
+}
 public class TimeManager : MonoBehaviour
 {
     

@@ -17,6 +17,8 @@ public class MemoryGameUIManager : MemoryGameManager
     //user가 입력을 할 수 있는 상황인지 확인
     bool canUserInput = false;
 
+
+    //게임 시작하는 함수
     public void StartGame()
     {
         InitializeGame();
@@ -47,16 +49,22 @@ public class MemoryGameUIManager : MemoryGameManager
         }
     }
 
+    //게임을 처음 시작할 때 호출하는 함수
     void InitializeGame()
     {
+        //부모에서 question, answer 배열을 초기화
         base.InitializeGame();
+        //만약 block 배열이 이미 존재하면
         if (blocks != null)
         {
+            //block 배열의 gameObject를 파괴
             foreach (var block in blocks)
             {
                 Destroy(block);
             }
         }
+
+        //block을 형성
         blocks = new GameObject[3, 3];
         for (int i = 0; i < blocks.GetLength(0); i++)
         {
