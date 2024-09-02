@@ -36,6 +36,8 @@ public class AlarmUI : MonoBehaviour
             Debug.LogError("alarm UI에 들어온 gameObject는 자식으로 TMP,를 가지고 있어야 합니다.");
             Debug.LogError(e.ToString());
         }
+
+        
     }
 
     private void Update()
