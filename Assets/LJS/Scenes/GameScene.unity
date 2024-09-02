@@ -403,6 +403,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 721947422549154884, guid: 91a07ebf2ae804c458f62281d195aa46,
+        type: 3}
+      propertyPath: useRotY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3570197510951866249, guid: 91a07ebf2ae804c458f62281d195aa46,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -458,6 +463,16 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4765736973799275021, guid: 91a07ebf2ae804c458f62281d195aa46,
+        type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765736973799275021, guid: 91a07ebf2ae804c458f62281d195aa46,
+        type: 3}
+      propertyPath: ObservedComponents.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8902588734034985308, guid: 91a07ebf2ae804c458f62281d195aa46,
         type: 3}
       propertyPath: m_Name
@@ -482,6 +497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1985646845}
+  - component: {fileID: 1985646846}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -504,6 +520,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1985646846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985646844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b387ec37a707b41aff75bc8b9d9aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ob: {fileID: 8902588734034985308, guid: 91a07ebf2ae804c458f62281d195aa46, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

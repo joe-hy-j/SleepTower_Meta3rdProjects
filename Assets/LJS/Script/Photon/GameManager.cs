@@ -5,17 +5,26 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+   public GameObject ob;
+
     // Start is called before the first frame update
     void Start()
     {
 
+        //DefaultPool pool = PhotonNetwork.PrefabPool as DefaultPool;
+        //pool.ResourceCache.Add("Player", ob);
 
-     PhotonNetwork.Instantiate("Player",Vector3.zero,Quaternion.identity);   
+       PhotonNetwork.Instantiate("Owner", Vector3.zero, Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    void Create()
+    {
+         PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
+
     }
 }
