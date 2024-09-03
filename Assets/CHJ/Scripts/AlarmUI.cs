@@ -16,17 +16,35 @@ public class AlarmUI : MonoBehaviour
     public event EventHandler onAlarmUI;
     public event EventHandler offAlarmUI;
 
-    private void Update()
+    private void Start()
     {
-        if(alarmManager.alarmCount > 0)
+        StartCoroutine(alarmOnCheckProcess());
+    }
+
+    IEnumerator alarmOnCheckProcess() {
+        while (true)
         {
-            //알람이 울렸는지 체크합니다.
-            if (alarmManager.CheckAlarmOn(TimeManager.Time.Hour, TimeManager.Time.Minute))
+            if (alarmManager.alarmCount > 0)
             {
-                if(onAlarmUI != null)
-                    onAlarmUI.Invoke(this, EventArgs.Empty);
-            }           
+                //알람이 울렸는지 체크합니다.
+                if (alarmManager.CheckAlarmOn(TimeManager.Time.Hour, TimeManager.Time.Minute))
+                {
+                    print("알람이 울렸습니다");
+                    if (onAlarmUI != null)
+                        onAlarmUI.Invoke(this, EventArgs.Empty);
+                }
+                yield return new WaitForSeconds(1);
+            }
+            else
+            {
+                yield return null;
+            }
         }
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
     /// <summary>
     /// 버튼을 통해서 호출하는 함수입니다.
