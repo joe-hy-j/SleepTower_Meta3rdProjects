@@ -10,6 +10,9 @@ public class GameRoomManager : MonoBehaviour
     public GameObject img_TimerSetting;  // 알람 시간설정 화면
     public GameObject img_TimerUI;  // 알람 화면
     public bool isSleepAll = false;  // 필요한 인원수가 충족 되었는지
+    public GameObject img_Chatting;  // 채팅 입력 창
+    public GameObject btn_ChatOn;  // 채팅 활성화 버튼
+    public GameObject btn_ChatOff;  // 채팅 비활성화 버튼
 
 
     void Start()
@@ -76,5 +79,21 @@ public class GameRoomManager : MonoBehaviour
     public void ExitRoom()
     {
         //SceneManager.LoadScene();
+    }
+
+    // 채팅 입력창 활성화 버튼
+    public void ChatInputOn()
+    {
+        img_Chatting.SetActive(true);
+        btn_ChatOn.SetActive(false);
+        btn_ChatOff.SetActive(true);
+    }
+
+    // 채팅 입력창 비활성화 버튼
+    public void ChatInputOff()
+    {
+        img_Chatting.SetActive(false);
+        btn_ChatOn.SetActive(true);
+        btn_ChatOff.SetActive(false);
     }
 }
