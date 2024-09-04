@@ -1008,8 +1008,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: -20}
-  m_SizeDelta: {x: 300, y: 30}
+  m_AnchoredPosition: {x: 358.8, y: -20}
+  m_SizeDelta: {x: 720, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &939629033
 MonoBehaviour:
@@ -1541,8 +1541,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200, y: 200}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: 400, y: 200}
+  m_SizeDelta: {x: 720.72, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309145978
 MonoBehaviour:
@@ -1709,15 +1709,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3611381400810011265, guid: 91a07ebf2ae804c458f62281d195aa46,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99580497
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611381400810011265, guid: 91a07ebf2ae804c458f62281d195aa46,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.09150162
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611381400810011265, guid: 91a07ebf2ae804c458f62281d195aa46,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611381400810011265, guid: 91a07ebf2ae804c458f62281d195aa46,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611381400810011265, guid: 91a07ebf2ae804c458f62281d195aa46,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 10.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4765736973799275021, guid: 91a07ebf2ae804c458f62281d195aa46,
         type: 3}
       propertyPath: sceneViewId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8162462044375629824, guid: 91a07ebf2ae804c458f62281d195aa46,
+        type: 3}
+      propertyPath: field of view
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 8902588734034985308, guid: 91a07ebf2ae804c458f62281d195aa46,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902588734034985308, guid: 91a07ebf2ae804c458f62281d195aa46,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

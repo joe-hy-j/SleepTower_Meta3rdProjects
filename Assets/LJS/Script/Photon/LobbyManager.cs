@@ -102,7 +102,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         print("방 입장 완료");
 
-        //GameScene으로 이동 -- 광장? 플레이룸?
+        //GameScene으로 이동 -- 광장 가는 버튼에 클릭이벤트 적용
+        PhotonNetwork.LoadLevel("GameScene"); 
+        // 생성하자 마자 바로 방입장이 됨 수정필요
     }
 
     // 방 입장 실패시 호출되는 함수
@@ -153,6 +155,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             //roomItem prefav 을 이용해서 roomItem 을 만든다. -- 만듬과 동시에 부모설정 UI 크기때문
             GameObject goRoomItem = Instantiate(roomItemFactory, rtContent);
+            print("방생성"); // 여기 제대로 안먹히고
             //만들어진 roomItem 의 부모를 ScrollView -> Content 의 transform 으로 한다.
             // goRoomItem.transform.parent = rtContent;
             // 만들어진 roomItem 에서 RoomItem 컴포넌트 가져온다 (스크립트컴포넌트가져온다는이야기)
