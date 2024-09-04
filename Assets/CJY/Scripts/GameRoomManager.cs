@@ -71,7 +71,7 @@ public class GameRoomManager : MonoBehaviour
     // 알람 UI
     public void StopTimer()
     {
-        isSleepAll = false;  // 
+        isSleepAll = false;  // 전원 취침 중 아님
         img_TimerUI.SetActive(false);  // 알람 UI 비활성화
     }
 
@@ -84,16 +84,16 @@ public class GameRoomManager : MonoBehaviour
     // 채팅 입력창 활성화 버튼
     public void ChatInputOn()
     {
-        img_Chatting.SetActive(true);
-        btn_ChatOn.SetActive(false);
-        btn_ChatOff.SetActive(true);
+        img_Chatting.SetActive(true);  // 채팅 입력창 활성화
+        btn_ChatOn.SetActive(false);  // 채팅 활성화 버튼 비활성화
+        btn_ChatOff.SetActive(true);  // 채팅 비활성화 버튼 활성화
     }
 
     // 채팅 입력창 비활성화 버튼
     public void ChatInputOff()
     {
-        img_Chatting.SetActive(false);
-        btn_ChatOn.SetActive(true);
-        btn_ChatOff.SetActive(false);
+        img_Chatting.SetActive(false);  // 채팅 입력창 비활성화
+        btn_ChatOn.SetActive(true);  // 채팅 활성화 버튼 활성화
+        btn_ChatOff.SetActive(false);  // 채팅 비활성화 버튼 비활성화
     }
 }
