@@ -47,6 +47,7 @@ public class ConnectSever : MonoBehaviourPunCallbacks
         base.OnJoinedLobby();
         JoinOrCreateRoom();
         print("로비 입장");
+
     }
 
 

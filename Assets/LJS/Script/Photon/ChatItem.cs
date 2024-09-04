@@ -2,33 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+
 public class ChatItem : MonoBehaviour
 {
+    //Text 
     TMP_Text chatText;
-    RectTransform rt;
+
+    // 매개없는 함수 담을 변수
+    public Action onAutoScroll;
 
     private void Awake()
     {
-        chatText = GetComponent<TMP_Text>();    
+        // Text 컴포넌트 가져오자
+        chatText = GetComponent<TMP_Text>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        //chatText = GetComponent<TMP_Text>();
-        //rt = GetComponent<RectTransform>();
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SetText(string s)
     {
+        // 텍스트 갱신
         chatText.text = s;
 
+        // 사이즈 조절 코루틴 실행
         StartCoroutine(UpdateSize());
     }
 
@@ -36,7 +41,17 @@ public class ChatItem : MonoBehaviour
     {
         yield return null;
 
+        // 텍스트의 내용에 맞춰서 크기를 조절
         RectTransform rt = GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(rt.sizeDelta.x, chatText. preferredHeight); 
+        rt.sizeDelta = new Vector2(rt.sizeDelta.x, chatText.preferredHeight);
+
+        yield return null;
+
+        // 만약에 onAutoScroll 에 함수가 들어있다면
+        if (onAutoScroll != null)
+        {
+            onAutoScroll();
+        }
+
     }
 }
