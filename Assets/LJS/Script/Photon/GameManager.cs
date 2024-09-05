@@ -11,9 +11,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        //DefaultPool pool = PhotonNetwork.PrefabPool as DefaultPool;
-        //pool.ResourceCache.Add("Player", ob);
-
+      
        PhotonNetwork.Instantiate("Owner", Vector3.zero, Quaternion.identity);
     }
 
@@ -24,7 +22,7 @@ public class GameManager : MonoBehaviour
     }
     void Create()
     {
-         PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity);
+         PhotonNetwork.Instantiate("Owner", Vector3.zero, Quaternion.identity);
 
     }
 }

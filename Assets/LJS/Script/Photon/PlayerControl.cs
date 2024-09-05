@@ -79,11 +79,11 @@ public class PlayerControl : MonoBehaviourPun
 
             dir.Normalize();
 
-            // 만약에 땅에 있으면 yVelocity 를 0 으로 초기화
-            if (cc.isGrounded)
-            {
-                yVelocity = 0;
-            }
+            //// 만약에 땅에 있으면 yVelocity 를 0 으로 초기화
+            //if (cc.isGrounded)
+            //{
+            //    yVelocity = 0;
+            //}
 
             // 만약에 Space 바를 누르면
             if (Input.GetKeyDown(KeyCode.Space))
