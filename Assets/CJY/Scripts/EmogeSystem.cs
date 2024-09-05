@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class EmogeSystem : MonoBehaviour
 {
-    public List<GameObject> emoges;
-    public GameObject emoGroup;
+    public List<GameObject> emoges;  // 이모티콘들을 넣을 리스트 생성
+    public GameObject emoGroup;  // 이모티콘들을 자식으로 넣은 부모 객체 지정
 
-    float currentTime = 0;
-    bool onEmo = false;
+    float currentTime = 0;  // 시간초 현재시간
+    bool onEmo = false;  // 이모티콘 활성화 여부
 
     void Start()
     {
@@ -18,72 +18,76 @@ public class EmogeSystem : MonoBehaviour
 
     void Update()
     {
+        // 이모티콘이 활성화되어 있을경우
         if(onEmo)
         {
-            currentTime += Time.deltaTime;
+            currentTime += Time.deltaTime;  // 시간초 시작
+            // 시간초가 3초 경과할 경우
             if (currentTime >= 3)
             {
-                emoGroup.SetActive(false);
-                onEmo = false;
-                currentTime = 0;
+                emoGroup.SetActive(false);  // 이모티콘 부모 객체 비활성화 (모든 이모티콘 비활성화)
+                onEmo = false;  // 이모티콘 비활성화 상태
+                currentTime = 0;  // 시간초 초기화
             }
         }
     }
 
-    public void SmileEmo()
+    public void SmileEmo()  // 웃는 이모티콘 버튼
     {
-        EmoActive();
-        ActiveOnlyOneEmoge(0);
+        EmoActive();  // 이모티콘 활성화 상태
+        ActiveOnlyOneEmoge(0);  // 해당 이모티콘만 활성화, 나머지 비활성화
     }
 
-    public void SadEmo()
+    public void SadEmo()  // 우는 이모티콘 버튼
     {
-        EmoActive();
-        ActiveOnlyOneEmoge(1);
+        EmoActive();  // 이모티콘 활성화 상태
+        ActiveOnlyOneEmoge(1);  // 해당 이모티콘만 활성화, 나머지 비활성화
     }
 
-    public void SurpEmo()
+    public void SurpEmo()  // 놀란 이모티콘 버튼
     {
-        EmoActive();
-        ActiveOnlyOneEmoge(2);
+        EmoActive();  // 이모티콘 활성화 상태
+        ActiveOnlyOneEmoge(2);  // 해당 이모티콘만 활성화, 나머지 비활성화
     }
 
-    public void HeartEmo()
+    public void HeartEmo()  // 하트 이모티콘 버튼
     {
-        ActiveOnlyOneEmoge(3);
+        EmoActive();  // 이모티콘 활성화 상태
+        ActiveOnlyOneEmoge(3);  // 해당 이모티콘만 활성화, 나머지 비활성화
     }
 
-    public void AngryEmo()
+    public void AngryEmo()  // 화난 이모티콘 버튼
     {
-        EmoActive();
-        ActiveOnlyOneEmoge(4);
+        EmoActive();  // 이모티콘 활성화 상태
+        ActiveOnlyOneEmoge(4);  // 해당 이모티콘만 활성화, 나머지 비활성화
     }
 
-    public void QuestEmo()
+    public void QuestEmo()  // 물음표 이모티콘 버튼
     {
-        EmoActive();
-        ActiveOnlyOneEmoge(5);
+        EmoActive();  // 이모티콘 활성화 상태
+        ActiveOnlyOneEmoge(5);  // 해당 이모티콘만 활성화, 나머지 비활성화
     }
 
-    void ActiveOnlyOneEmoge(int WantToActive)
+    // 원하는 이모티콘만 활성화 하고 나머지는 비활성화 시키는 함수
+    void ActiveOnlyOneEmoge(int WantToActive)  // WantToActive = 활성화 하고자 하는 이모티콘의 리스트 인덱스 숫자
     {
-        for (int i = 0; i < emoges.Count; i++)
+        for (int i = 0; i < emoges.Count; i++)  // 저장된 모든 이모티콘의 수만큼 계산
         {
-            if(i == WantToActive)
+            if(i == WantToActive)  // 원하는 이모티콘의 인덱스 숫자가 i 라면
             {
-                emoges[i].SetActive(true);
+                emoges[i].SetActive(true);  // i 에 해당하는 인덱스의 이모티콘만 활성화
             }
             else
             {
-                emoges[i].SetActive(false);
+                emoges[i].SetActive(false);  // i 에 남은 나머지 인덱스의 이모티콘들은 비활성화
             }
         }
     }
 
-    void EmoActive()
+    void EmoActive()  // 이모티콘이 활성화 상태일때 호출할 함수
     {
-        emoGroup.SetActive(true);
-        onEmo = true;
-        currentTime = 0;
+        emoGroup.SetActive(true);  // 이모티콘들의 부모 객체 활성화
+        onEmo = true;  // 이모티콘 활성화 상태
+        currentTime = 0;  // 시간초 초기화
     }
 }
