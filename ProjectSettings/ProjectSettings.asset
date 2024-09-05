@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: CJYCompany
   productName: SleepTower_Meta3rdProjects
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -71,11 +71,11 @@ PlayerSettings:
   androidUseSwappy: 0
   androidBlitType: 0
   androidResizableWindow: 0
-  androidDefaultWindowWidth: 1920
-  androidDefaultWindowHeight: 1080
+  androidDefaultWindowWidth: 412
+  androidDefaultWindowHeight: 869
   androidMinimumWindowWidth: 400
-  androidMinimumWindowHeight: 300
-  androidFullscreenMode: 1
+  androidMinimumWindowHeight: 800
+  androidFullscreenMode: 3
   androidAutoRotationBehavior: 1
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
