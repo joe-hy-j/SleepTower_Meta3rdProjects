@@ -103,8 +103,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         print("방 입장 완료");
 
         //GameScene으로 이동 -- 광장 가는 버튼에 클릭이벤트 적용
-        PhotonNetwork.LoadLevel("TownScene"); 
+        PhotonNetwork.LoadLevel("MainScene_CJY"); 
         // 생성하자 마자 바로 방입장이 됨 수정필요
+    }
+
+    public void onJoinedTown()
+    {
+        base.OnJoinedRoom();
+        print("Town 입장 완료");
+
+        PhotonNetwork.LoadLevel("TownScene");
     }
 
     // 방 입장 실패시 호출되는 함수
