@@ -78,6 +78,7 @@ public class GameRoomManager : MonoBehaviour
     // 방 나가기 버튼
     public void ExitRoom()
     {
+        // PhotonNetwork.LoadLevel("LobbyScene") 써주세요:)
         SceneManager.LoadScene("LobbyScene");
     }
 

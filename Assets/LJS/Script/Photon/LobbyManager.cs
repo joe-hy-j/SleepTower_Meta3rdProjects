@@ -204,4 +204,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
 
     }
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+    }
 }
