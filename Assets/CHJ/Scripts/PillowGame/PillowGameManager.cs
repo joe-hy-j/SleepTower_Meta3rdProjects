@@ -40,9 +40,12 @@ public class PillowGameManager : MonoBehaviour
     [SerializeField]
     Dictionary<PillowType, int> pillowCount;
 
-    public Text timeText;
-    public Text removeColorText;
-    public Button startButton;
+    Text timeText;
+    Text removeColorText;
+    Button startButton;
+
+    public GameObject textFactory;
+    public GameObject buttonFactory;
 
 
     // 플레이어가 화면을 눌렀는지 체크
@@ -66,6 +69,7 @@ public class PillowGameManager : MonoBehaviour
                 //게임을 이김
                 gameRound++;
                 isPlaying = false;
+                removeColorText.text = "";
                 RemovePillows();
 
                 if(gameRound < 2)
@@ -79,9 +83,23 @@ public class PillowGameManager : MonoBehaviour
             }
         }
     }
+
+    public void SetUIInterface()
+    {
+        timeText = Instantiate(textFactory, GameObject.Find("GameCanvas").transform).GetComponent<Text>();
+        timeText.text = "";
+        removeColorText = Instantiate(textFactory, GameObject.Find("GameCanvas").transform).GetComponent<Text>();
+        removeColorText.text = "";
+        startButton = Instantiate(buttonFactory, GameObject.Find("GameCanvas").transform).GetComponent<Button>();   
+
+        startButton.onClick.AddListener(() =>
+        {
+            StartGame();
+            startButton.interactable = false;
+        });
+    }
     public void StartGame()
     {
-        startButton.interactable = false;
         StartCoroutine(StartGameProcess());
     }
 
@@ -126,7 +144,7 @@ public class PillowGameManager : MonoBehaviour
     //배게를 생성한다.
     void CreatePillow(PillowType color)
     {
-        Pillow newPillow = new Pillow(color, Instantiate(pillowFactory, new Vector3(Random.Range(-2.0f, 2.0f),Random.Range(-6.0f,6.0f),0),Quaternion.identity));
+        Pillow newPillow = new Pillow(color, Instantiate(pillowFactory, new Vector3(Random.Range(-2.0f, 2.0f),pillowFactory.transform.localScale.z/2,Random.Range(-2.0f,2.0f)),Quaternion.Euler(90,0,0)));
         newPillow.pillow.GetComponent<Renderer>().material = mat[(int)color];
         pillows.Add(newPillow);
     }
@@ -185,8 +203,9 @@ public class PillowGameManager : MonoBehaviour
     {
         timeText.text = "게임 종료...";
         yield return new WaitForSeconds(1);
-        timeText.text = "";
-        startButton.interactable = true;
+        Destroy(timeText.gameObject);
+        Destroy(startButton.gameObject);
+        Destroy(removeColorText.gameObject);
     }
 
     public void OnClick()
