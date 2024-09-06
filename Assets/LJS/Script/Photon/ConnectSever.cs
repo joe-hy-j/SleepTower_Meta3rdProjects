@@ -88,6 +88,7 @@ public class ConnectSever : MonoBehaviourPunCallbacks
 
         //GameScene으로 이동 --- 이러면 방으로 가는것이고
 
+        // 프로토- 잠시 광장 비활성화 -- 알파,베타 쯤 공개
         PhotonNetwork.LoadLevel("GameScene"); // 광장으로 가는것 , 아직 덜 구현
     }
 }
