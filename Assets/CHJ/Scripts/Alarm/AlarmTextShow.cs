@@ -7,11 +7,10 @@ using UnityEngine.UI;
 public class AlarmTextShow : MonoBehaviour
 {
     public Text text;
-    public AlarmUI alarmManager;
     void Start()
     {
-        alarmManager.onAlarmUI += ShowText;
-        alarmManager.offAlarmUI += HideText;
+        AlarmManager.instance.onAlarmUI += ShowText;
+        AlarmManager.instance.offAlarmUI += HideText;
     }
 
     void ShowText(object sender, EventArgs e)

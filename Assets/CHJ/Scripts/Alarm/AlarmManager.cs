@@ -28,6 +28,23 @@ public class AlarmManager : MonoBehaviour
 {
     List<Alarm> alarmList = new List<Alarm>();
 
+    public event EventHandler onAlarmUI;
+    public event EventHandler offAlarmUI;
+
+    public static AlarmManager instance;
+
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public int alarmCount
     {
         get { return alarmList.Count; }
@@ -118,5 +135,17 @@ public class AlarmManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void OnAlarm()
+    {
+        if(onAlarmUI != null)
+            onAlarmUI.Invoke(this, EventArgs.Empty);
+    }
+    
+    public void OffAlarm()
+    {
+        if(offAlarmUI != null)  
+            offAlarmUI.Invoke(this, EventArgs.Empty);
     }
 }

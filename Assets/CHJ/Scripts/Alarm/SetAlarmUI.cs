@@ -14,16 +14,13 @@ public class SetAlarmUI : MonoBehaviour
     public Text daynightText;
     public Text alarmText;
 
-    [Header("Alarm Manager")]
-    public AlarmManager alarmManager;
-
     private void Update()
     {
-        if (alarmManager.alarmCount > 0)
+        if (AlarmManager.instance.alarmCount > 0)
         {
             //alarm 시간을 포함하는 객체를 보여준다.
             alarmUI.SetActive(true);
-            Alarm alarm = alarmManager.GetAlarmByIndex(0);
+            Alarm alarm = AlarmManager.instance.GetAlarmByIndex(0);
             //alarm의 오전 오후를 보여준다
             if (alarm.hour > 12)
             {
@@ -34,7 +31,7 @@ public class SetAlarmUI : MonoBehaviour
                 daynightText.text = "오전";
             }
             //alarm 시간을 보여준다.
-            alarmText.text = alarmManager.GetAlarmByIndex(0).ToString();
+            alarmText.text = AlarmManager.instance.GetAlarmByIndex(0).ToString();
         }
         else
         {

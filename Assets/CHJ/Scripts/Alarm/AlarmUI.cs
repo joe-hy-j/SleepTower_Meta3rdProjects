@@ -11,11 +11,6 @@ public class AlarmUI : MonoBehaviour
     public TMP_InputField hourInput;
     public TMP_InputField minuteInput;
 
-    public AlarmManager alarmManager;
-
-    public event EventHandler onAlarmUI;
-    public event EventHandler offAlarmUI;
-
     private void Start()
     {
         StartCoroutine(alarmOnCheckProcess());
@@ -24,14 +19,13 @@ public class AlarmUI : MonoBehaviour
     IEnumerator alarmOnCheckProcess() {
         while (true)
         {
-            if (alarmManager.alarmCount > 0)
+            if (AlarmManager.instance.alarmCount > 0)
             {
                 //알람이 울렸는지 체크합니다.
-                if (alarmManager.CheckAlarmOn(TimeManager.Time.Hour, TimeManager.Time.Minute))
+                if (AlarmManager.instance.CheckAlarmOn(TimeManager.Time.Hour, TimeManager.Time.Minute))
                 {
                     print("알람이 울렸습니다");
-                    if (onAlarmUI != null)
-                        onAlarmUI.Invoke(this, EventArgs.Empty);
+                    AlarmManager.instance.OnAlarm();
                 }
                 yield return new WaitForSeconds(1);
             }
@@ -52,9 +46,9 @@ public class AlarmUI : MonoBehaviour
     public void AddAlarm()
     {
         //원래 있던 알람을 없앱니다.
-        alarmManager.DeleteAllAlarm();
+        AlarmManager.instance.DeleteAllAlarm();
         //alarm manager에서 alarm을 설정합니다.
-        alarmManager.SetAlarm(Convert.ToInt32(hourInput.text), Convert.ToInt32(minuteInput.text));
+        AlarmManager.instance.SetAlarm(Convert.ToInt32(hourInput.text), Convert.ToInt32(minuteInput.text));
         print("알람이 추가되었습니다");
     }
     /// <summary>
@@ -62,9 +56,6 @@ public class AlarmUI : MonoBehaviour
     /// </summary>
     public void DisableAlarm()
     {
-        if (offAlarmUI != null)
-        {
-            offAlarmUI.Invoke(this, EventArgs.Empty);
-        }
+        AlarmManager.instance.OffAlarm();
     }
 }
