@@ -78,7 +78,7 @@ public class GameRoomManager : MonoBehaviour
     // 방 나가기 버튼
     public void ExitRoom()
     {
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene("LobbyScene");
     }
 
     // 채팅 입력창 활성화 버튼
