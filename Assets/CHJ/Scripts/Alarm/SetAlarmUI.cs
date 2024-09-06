@@ -14,6 +14,24 @@ public class SetAlarmUI : MonoBehaviour
     public Text daynightText;
     public Text alarmText;
 
+    [Header("알람 중지 버튼")]
+    public GameObject alarmStopBtn;
+
+    private void Start()
+    {
+        alarmStopBtn.SetActive(false);
+        AlarmManager.instance.onAlarmUI += ShowAlarmStopBtn;
+        AlarmManager.instance.offAlarmUI += HideAlarmStopBtn;
+    }
+
+    public void ShowAlarmStopBtn(object sender, EventArgs e)
+    {
+        alarmStopBtn.SetActive(true);
+    }
+    public void HideAlarmStopBtn(object sender, EventArgs e)
+    {
+        alarmStopBtn.SetActive(false);
+    }
     private void Update()
     {
         if (AlarmManager.instance.alarmCount > 0)

@@ -489,6 +489,7 @@ MonoBehaviour:
   alarmUI: {fileID: 1952530401}
   daynightText: {fileID: 1678286725}
   alarmText: {fileID: 1675838249}
+  alarmStopBtn: {fileID: 1222083121}
 --- !u!1 &634418714 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1624080957031908384, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
@@ -837,6 +838,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1222083121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4216928879265784919, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1653424856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1232396570 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6155106018948444589, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
@@ -1218,9 +1225,44 @@ PrefabInstance:
       objectReference: {fileID: 1897904738}
     - target: {fileID: 3917589657817142409, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917589657817142409, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917589657817142409, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2131692661}
+    - target: {fileID: 3917589657817142409, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 998414274}
+    - target: {fileID: 3917589657817142409, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917589657817142409, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: DisableAlarm
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917589657817142409, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AlarmUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917589657817142409, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4104193826297277504, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
       propertyPath: m_IsActive
