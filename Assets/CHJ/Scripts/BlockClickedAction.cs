@@ -12,7 +12,7 @@ public class BlockClickedAction : MonoBehaviour
 
     private void Start()
     {
-        gm = GameObject.Find("MemoryGameManager").GetComponent<MemoryGameUIManager>();
+        gm = MiniGameManager.instance.memoryGM;
     }
     public void SetColumnAndRow(int column, int row)
     {

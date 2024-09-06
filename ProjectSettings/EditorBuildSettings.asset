@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/LJS/Scenes/LobbyScene.unity
     guid: 16ef71291750d204db26bd1b48e82c7e
   - enabled: 1
-    path: Assets/CJY/Scenes/MainScene_CJY.unity
-    guid: 705dffdbdf8c18840bfdd35d7ca4f4e6
+    path: Assets/Main/Scenes/MainScene.unity
+    guid: a811cae64c771c348823211a448f7631
   m_configObjects: {}
