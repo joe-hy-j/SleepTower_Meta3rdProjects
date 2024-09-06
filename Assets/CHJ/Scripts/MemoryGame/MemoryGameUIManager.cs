@@ -10,23 +10,34 @@ public class MemoryGameUIManager : MemoryGameManager
     GameObject[,] blocks;
     public GameObject blockFactory;
 
-    public TMP_InputField inputField;
-    public Button button;
-    public TextMeshProUGUI winText;
+    public GameObject buttonFactory;
+    public GameObject textFactory;
     
     //user가 입력을 할 수 있는 상황인지 확인
     bool canUserInput = false;
 
+    Button startButton;
+    Text winText;
 
+    public void SetUIInterface()
+    {
+        winText = Instantiate(textFactory, GameObject.Find("GameCanvas").transform).GetComponent<Text>();
+        winText.gameObject.SetActive(false);
+        winText.text = "이겼습니다!";
+        startButton = Instantiate(buttonFactory, GameObject.Find("GameCanvas").transform).GetComponent<Button>();
+
+        startButton.onClick.AddListener(() =>
+        {
+            StartGame();
+            startButton.interactable = false;
+        });
+    }
     //게임 시작하는 함수
     public void StartGame()
     {
         InitializeGame();
         CreateQuestion();
-        SetQuestionCount(Convert.ToInt32(inputField.text));
-        inputField.gameObject.SetActive(false);
-        button.gameObject.SetActive(false);
-        winText.gameObject.SetActive(false);
+        SetQuestionCount(3);
     }
 
 
@@ -37,18 +48,23 @@ public class MemoryGameUIManager : MemoryGameManager
             if (CheckAnswer())
             {
                 canUserInput = false;
-                if (score < questionCount)
-                {
-                    CreateQuestion();
-                }
-                else
-                {
-                    EndGame();
-                }
+                StartCoroutine(CheckProcess(0.1f));
+
             }
         }
     }
-
+    IEnumerator CheckProcess(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        if (score < questionCount)
+        {
+            CreateQuestion();
+        }
+        else
+        {
+            EndGame();
+        }
+    }
     //게임을 처음 시작할 때 호출하는 함수
     void InitializeGame()
     {
@@ -74,6 +90,8 @@ public class MemoryGameUIManager : MemoryGameManager
                 blocks[i,j].GetComponent<BlockClickedAction>().SetColumnAndRow(i, j);
             }
         }
+
+
     }
 
     void CreateQuestion()
@@ -97,12 +115,24 @@ public class MemoryGameUIManager : MemoryGameManager
     void EndGame()
     {
         base.EndGame();
-
-        inputField.gameObject.SetActive(true);
-        button.gameObject.SetActive(true);
-        winText.gameObject.SetActive(true);
+        Destroy(startButton.gameObject);
+        RemoveAllBlocks();
+        StartCoroutine(ShowTextProcess(1));
     }
 
+    IEnumerator ShowTextProcess(float seconds)
+    {
+        winText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(seconds);
+        Destroy(winText.gameObject);
+    }
+    void RemoveAllBlocks()
+    {
+        foreach(GameObject block in blocks)
+        {
+            Destroy(block);
+        }
+    }
     float ColomnToXPos(int column)
     {
         return (column - 1) * 1.3f;

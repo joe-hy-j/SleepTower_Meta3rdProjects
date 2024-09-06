@@ -14,6 +14,7 @@ public class MemoryGameUser : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
+                print(hit.transform.name);
                 if (hit.collider.gameObject.CompareTag("MemoryGameBlock"))
                 {
                     print("Hello");
