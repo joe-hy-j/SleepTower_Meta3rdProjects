@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameRoomManager : MonoBehaviour
 {
@@ -78,8 +78,7 @@ public class GameRoomManager : MonoBehaviour
     // 방 나가기 버튼
     public void ExitRoom()
     {
-        // PhotonNetwork.LoadLevel("LobbyScene") 써주세요:)
-        SceneManager.LoadScene("LobbyScene");
+        PhotonNetwork.LoadLevel("LobbyScene");
     }
 
     // 채팅 입력창 활성화 버튼
