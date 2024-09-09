@@ -79,7 +79,7 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
     // 방 나가기 버튼
     public void ExitRoom()
     {
-        PhotonNetwork.LoadLevel("LobbyScene");
+        //PhotonNetwork.LoadLevel("LobbyScene");
         //SceneManager.LoadScene("LobbyScene");
         PhotonNetwork.LeaveRoom();
     }
