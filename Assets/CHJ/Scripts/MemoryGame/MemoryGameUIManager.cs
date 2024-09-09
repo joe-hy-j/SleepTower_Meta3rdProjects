@@ -115,6 +115,7 @@ public class MemoryGameUIManager : MemoryGameManager
     void EndGame()
     {
         base.EndGame();
+        AlarmManager.instance.OffAlarm();
         Destroy(startButton.gameObject);
         RemoveAllBlocks();
         StartCoroutine(ShowTextProcess(1));
