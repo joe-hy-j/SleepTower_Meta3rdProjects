@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class GameRoomManager : MonoBehaviour
+
+public class GameRoomManager : MonoBehaviourPunCallbacks
 {
     public int sleepCount = 0;  // 현재 자는 인원 수
     public int needSleepCount = 1;  // 필요한 총 인원
@@ -78,6 +79,26 @@ public class GameRoomManager : MonoBehaviour
     // 방 나가기 버튼
     public void ExitRoom()
     {
+        PhotonNetwork.LoadLevel("LobbyScene");
+        //SceneManager.LoadScene("LobbyScene");
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+    }
+
+    public override void OnConnectedToMaster()
+    {
+        base.OnConnectedToMaster();
+        PhotonNetwork.JoinLobby();
+    }
+
+    public override void OnJoinedLobby()
+    {
+        base.OnJoinedLobby();
+        //SceneManager.LoadScene("LobbyScene");
         PhotonNetwork.LoadLevel("LobbyScene");
     }
 
