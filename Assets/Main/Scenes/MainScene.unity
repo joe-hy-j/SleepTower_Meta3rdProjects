@@ -756,6 +756,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 998414274}
+    - targetCorrespondingSourceObject: {fileID: 9140926430708223997, guid: d4786a8d04a8715468d85a65a40d3f3a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 998414275}
   m_SourcePrefab: {fileID: 100100000, guid: d4786a8d04a8715468d85a65a40d3f3a, type: 3}
 --- !u!1 &998414271 stripped
 GameObject:
@@ -777,6 +781,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hourInput: {fileID: 1210861147}
   minuteInput: {fileID: 436697962}
+--- !u!114 &998414275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998414271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 4
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!114 &1037189883 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6764587863454771772, guid: 16979ae150a42464bb73e1e1118a2d5b,
@@ -1341,7 +1367,7 @@ PrefabInstance:
     - target: {fileID: 4104193826297277504, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4376785967166257419, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}

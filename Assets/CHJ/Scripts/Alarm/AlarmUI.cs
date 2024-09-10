@@ -1,18 +1,21 @@
+using Photon.Pun;
+using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AlarmUI : MonoBehaviour
+public class AlarmUI : MonoBehaviourPunCallbacks
 {
     [Header("시간과 분 Input Field")]
     public TMP_InputField hourInput;
     public TMP_InputField minuteInput;
 
     private void Start()
-    {
+    {   
         StartCoroutine(alarmOnCheckProcess());
     }
 
@@ -45,10 +48,24 @@ public class AlarmUI : MonoBehaviour
     /// </summary>
     public void AddAlarm()
     {
+        // 내가 만약 방장이 아니면
+        if (!photonView.IsMine)
+        {
+            // UI에 방장만 알람을 설정할 수 있습니다 띄우기
+            Debug.LogError("방장만 알람을 설정할 수 있습니다");
+            // return;
+            return;
+        }
+        photonView.RPC(nameof(RpcAddAlarm), RpcTarget.All, Convert.ToInt32(hourInput.text), Convert.ToInt32(minuteInput.text));
+    }
+
+    [PunRPC]
+    public void RpcAddAlarm(int hour, int minute)
+    {
         //원래 있던 알람을 없앱니다.
         AlarmManager.instance.DeleteAllAlarm();
         //alarm manager에서 alarm을 설정합니다.
-        AlarmManager.instance.SetAlarm(Convert.ToInt32(hourInput.text), Convert.ToInt32(minuteInput.text));
+        AlarmManager.instance.SetAlarm(hour, minute);
         print("알람이 추가되었습니다");
     }
     /// <summary>
@@ -58,4 +75,23 @@ public class AlarmUI : MonoBehaviour
     {
         AlarmManager.instance.OffAlarm();
     }
+
+    [PunRPC]
+    public void InitAlarm(int hour, int minute)
+    {
+        print("알람이 초기화되었습니다.");
+        AlarmManager.instance.SetAlarm(hour, minute);
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        base.OnPlayerEnteredRoom(newPlayer);
+
+        if (!photonView.IsMine) return;
+        print(" new player entered room!");
+
+        photonView.RPC(nameof(InitAlarm), newPlayer, AlarmManager.instance.GetAlarmByIndex(0).hour, AlarmManager.instance.GetAlarmByIndex(0).minute);
+    }
+
+    
 }
