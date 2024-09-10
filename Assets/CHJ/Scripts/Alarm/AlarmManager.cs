@@ -1,4 +1,5 @@
 using JHJ;
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ public class Alarm
     }
 }
 
-public class AlarmManager : MonoBehaviour
+public class AlarmManager : MonoBehaviourPun
 {
     List<Alarm> alarmList = new List<Alarm>();
 
