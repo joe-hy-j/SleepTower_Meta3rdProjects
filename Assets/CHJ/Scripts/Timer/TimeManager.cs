@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,11 @@ namespace JHJ
 {
     public static class TimeExtension
     {
+        /// <summary>
+        ///  한자리 숫자 앞에 0을 붙여주는 함수
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public static string TimeToPrettyString(this int number)
         {
             if (number < 10)
@@ -18,10 +24,8 @@ namespace JHJ
         }
     }
 }
-public class TimeManager : MonoBehaviour
+public class TimeManager : MonoBehaviourPun, IPunObservable
 {
-    
-    
     public int Year
     {
         get; private set;
@@ -73,12 +77,15 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
-        //현재 가상시간을 설정합니다.
-        SetCurrentTime();
+        if(photonView.IsMine)
+            //현재 가상시간을 설정합니다.
+            SetCurrentTime();
     }
 
     void Update()
     {
+        if (photonView.IsMine != true) return;
+
         millisecond += UnityEngine.Time.deltaTime * timeScale;
         if(millisecond > 1)
         {
@@ -125,5 +132,21 @@ public class TimeManager : MonoBehaviour
     int Get12Hours()
     {
         return Hour % 12;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(Hour);
+            stream.SendNext(Minute);
+            stream.SendNext(Second);
+        }
+        else if (stream.IsReading)
+        {
+            Hour = (int)stream.ReceiveNext();
+            Minute = (int)stream.ReceiveNext();
+            Second = (int)stream.ReceiveNext();
+        }
     }
 }
