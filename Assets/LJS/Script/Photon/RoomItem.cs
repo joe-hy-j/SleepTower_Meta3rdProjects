@@ -12,26 +12,32 @@ public class RoomItem : MonoBehaviour
     // 클릭 되었을 때 호출 해줄 함수를 담을 변수
     public Action<string> onChangeRoomName;
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject imgLock;
+
+    //방 이름
+    string realRoomName;
+
+    public void SetContent(string roomName, int currentPlayer, int maxPlayer)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        // roomName을 전역변수에 담기
+        realRoomName = roomName;
+        // 정보 입력
+        roomInfo.text = roomName + "";
     }
 
     public void SetInfo(string roomName, int currPlayer, int maxPlayer)
     {
         //나의 게임오브젝트 이름을 방이름으로 하자
-        name = roomName;
+        realRoomName = roomName;
 
         // 방 정보를 Text에 설정
         //방 이름 (1/4)
         roomInfo.text = roomName + " ( " + currPlayer + " / " + maxPlayer + " ) ";
+    }
+
+    public void SetLockMode(bool isLock)
+    {
+        imgLock.SetActive(isLock);
     }
 
     public void OnClick()
@@ -40,7 +46,7 @@ public class RoomItem : MonoBehaviour
         // onChangeRoomName 가 null 이 아니라면 
         if (onChangeRoomName != null)
         {
-            onChangeRoomName(name);
+            onChangeRoomName(realRoomName);
 
         }
 
