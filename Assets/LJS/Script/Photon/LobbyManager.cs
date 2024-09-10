@@ -114,7 +114,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         print("방 입장 완료");
 
-        PhotonNetwork.LoadLevel("MainScene_LJS"); 
+        PhotonNetwork.LoadLevel("GameScene_LJS"); 
         
     }
 
