@@ -1709,6 +1709,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beds
       objectReference: {fileID: 0}
+    - target: {fileID: 3574986631355100312, guid: c38c950736b137f48bb8c95cd9de9af6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692624871847859500, guid: c38c950736b137f48bb8c95cd9de9af6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6369744576622079969, guid: c38c950736b137f48bb8c95cd9de9af6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1758,6 +1768,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977522708399089314, guid: c38c950736b137f48bb8c95cd9de9af6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872105569318272003, guid: c38c950736b137f48bb8c95cd9de9af6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

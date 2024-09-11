@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -7,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed = 5;  // 플레이어 이동속도
     Joystick joystick;  // 조작할 조이스틱
     CharacterController cc;  // CharacterController 컴포넌트 지정변수
+    public Animator anim;
 
     float gravity = -9.8f;  // 중력
     float yVelocity;  // y속력
@@ -25,6 +27,8 @@ public class PlayerMove : MonoBehaviour
         {
             Vector3 dir = transform.forward;  // 자신의 앞쪽 방향으로
 
+            anim.SetBool("IsRun", true);
+
             // 지상에 닿아있을 경우 yVelocity값 초기화
             if (cc.isGrounded)
             {
@@ -39,6 +43,10 @@ public class PlayerMove : MonoBehaviour
 
             // 조이스틱의 상하좌우 이동 값을 자신의 Y축 회전 값에 적용
             transform.rotation = Quaternion.Euler(0, Mathf.Atan2(joystick.Horizontal, joystick.Vertical) * Mathf.Rad2Deg, 0);
+        }
+        else
+        {
+            anim.SetBool("IsRun", false);
         }
     }
 }
