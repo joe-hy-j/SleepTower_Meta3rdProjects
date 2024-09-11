@@ -72,7 +72,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         // 방 제목만 나오게
         customInfo["room_Name"] = inputRoomName.text;
         // 비밀번호가 있으면 잠금 방으로 간주
-        bool isLock = inputPassWord.text.Length > 0;
+        bool isLock = false;
+        if (inputPassWord.text.Length > 0) isLock = true;
         customInfo["lock_mode"] = isLock;
 
         // 커스텀 정보를 Lobby 에서 사용할 수 있게 설정
@@ -131,15 +132,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         print("로비 진입 성공!");
     }
 
-    void RemoveRoomList()
-    {
-        // rtContent 에 있는 자식 GameObject 를 모두 삭제
-        for (int i = 0; i < rtContent.childCount; i++)
-        {
-            Destroy(rtContent.GetChild(i).gameObject);
-        }
-
-    }
     void UpadateRoomList(List<RoomInfo> roomList)
     {
         for (int i = 0; i < roomList.Count; i++)
@@ -208,19 +200,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             roomItem.onChangeRoomName = OnChangeRoomNameField;
         }
     }
-
-    public void OnChangeRoomName(string roomName)
+    void RemoveRoomList()
     {
-        inputRoomName.text = roomName;
-    }
+        // rtContent 에 있는 자식 GameObject 를 모두 삭제
+        for (int i = 0; i < rtContent.childCount; i++)
+        {
+            Destroy(rtContent.GetChild(i).gameObject);
+        }
 
-    //void RemoveRoomList()
-    //{
-    //    for (int i = 0; i < rtContent.childCount; i++)
-    //    {
-    //        Destroy(rtContent.GetChild(i).gameObject);
-    //    }
-    //}
+    }
 
     public override void OnLeftRoom()
     {
