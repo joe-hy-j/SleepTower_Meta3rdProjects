@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 373095137197578871}
   - component: {fileID: 3430254026352166171}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ImageLok
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomInfo: {fileID: 8516249934956641434}
-  imgLock: {fileID: 0}
+  imgLock: {fileID: 128664112349336666}
 --- !u!1 &8082512381357431800
 GameObject:
   m_ObjectHideFlags: 0

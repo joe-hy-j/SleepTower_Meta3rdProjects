@@ -838,6 +838,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1769335083}
+    - target: {fileID: 5639014625695077292, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6158788017948338129, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1118,6 +1123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851486582521000256, guid: 1831090d0f63e22408296d13a7790e72,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4438379041764442591, guid: 1831090d0f63e22408296d13a7790e72,
         type: 3}
