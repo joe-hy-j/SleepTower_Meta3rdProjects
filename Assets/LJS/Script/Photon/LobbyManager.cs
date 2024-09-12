@@ -21,10 +21,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public Button btnCreateRoom;
 
 
-    // RoomItem Prefab
-    public GameObject roomItemFactory;
-    // RoomListView -> Content -> RectTransform
-    public RectTransform rtContent;
 
     // 방 정보 가지고 있는 DIctionary
     Dictionary<string, RoomInfo> roomCache = new Dictionary<string, RoomInfo>();
@@ -36,6 +32,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         // 방 참여, 생성 비활성화
         btnJoinRoom.interactable = false;
         btnCreateRoom.interactable = false;
+
+        //포톤 로비 진입 문제나면 바로 삭제
+        PhotonNetwork.JoinLobby();
+
         // inputRoomName 의 내용이 변경될 떄 호출되는 함수
         inputRoomName.onValueChanged.AddListener(OnValueChangedRoomName);
         // inputMaxPlayer의 내용이 변경될 떄 호출되는 함수
@@ -63,20 +63,19 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         RoomOptions options = new RoomOptions();
         // 최대 인원 설정
         options.MaxPlayers = int.Parse(inputMaxPlayer.text);
-        // 방 목록에 보이게 하냐? 안하냐? 
-        options.IsVisible = true; // false일때 비밀 방 검색해야 나온는 그런 거
-        // 방 참여가능? 불가능?
-        options.IsOpen = true; // 게임 중 참여불가능하게 하는거 true 일때
         // 커스텀 정보 설정
+        
         ExitGames.Client.Photon.Hashtable customInfo = new ExitGames.Client.Photon.Hashtable();
+
         // 방 제목만 나오게
         customInfo["room_Name"] = inputRoomName.text;
+
         // 비밀번호가 있으면 잠금 방으로 간주
         bool isLock = false;
         if (inputPassWord.text.Length > 0) isLock = true;
         customInfo["lock_mode"] = isLock;
-
         // 커스텀 정보를 Lobby 에서 사용할 수 있게 설정
+        options.CustomRoomProperties = customInfo;
         // 로비에서 알아야 할 커스텀 정보의 Key 값 들 [배열]
         string[] customKeys = { "room_Name", "lock_mode" };
         options.CustomRoomPropertiesForLobby = customKeys;
@@ -115,7 +114,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         print("방 입장 완료");
 
-        PhotonNetwork.LoadLevel("GameScene_LJS");
+        PhotonNetwork.LoadLevel("MainScene");
 
     }
 
@@ -132,6 +131,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         print("로비 진입 성공!");
     }
 
+
+    // 누군가 방을 만들거나 수정했을때 호출되는 함수
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        base.OnRoomListUpdate(roomList);
+
+        
+        // 전체 룸리스트 UI 삭제
+        RemoveRoomList();
+        //내가 따로 관리하는 룸 리스트 정보 갱신
+        UpadateRoomList(roomList);
+        //룸 리스트 정보를 가지고 UI를 다시 생성
+        CreateRoomList();
+
+    }
     void UpadateRoomList(List<RoomInfo> roomList)
     {
         for (int i = 0; i < roomList.Count; i++)
@@ -153,39 +167,30 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             }
             else
             {
-
-                roomCache[roomList[i].Name] = roomList[i];
+                if (roomList[i].RemovedFromList == false)
+                {
+                    roomCache[roomList[i].Name] = roomList[i];
+                }
             }
         }
 
     }
 
-    // 누군가 방을 만들거나 수정했을때 호출되는 함수
-    public override void OnRoomListUpdate(List<RoomInfo> roomList)
-    {
-        base.OnRoomListUpdate(roomList);
-
-        // 전체 룸리스트 UI 삭제
-        RemoveRoomList();
-        //내가 따로 관리하는 룸 리스트 정보 갱신
-        UpadateRoomList(roomList);
-        //룸 리스트 정보를 가지고 UI를 다시 생성
-        CreateRoomList();
-
-    }
+    // RoomItem Prefab
+    public GameObject roomItemFactory;
+    // RoomListView -> Content -> RectTransform
+    public RectTransform rtContent;
     void CreateRoomList()
     {
         foreach (RoomInfo info in roomCache.Values)
         {
+            
             //roomItem prefav 을 이용해서 roomItem 을 만든다. -- 만듬과 동시에 부모설정 UI 크기때문
-            GameObject goRoomItem = Instantiate(roomItemFactory, rtContent);
-            print("방생성"); // 여기 제대로 안먹히고
-                          //만들어진 roomItem 의 부모를 ScrollView -> Content 의 transform 으로 한다.
-                          // 만들어진 roomItem 에서 RoomItem 컴포넌트 가져온다 (스크립트컴포넌트가져온다는이야기)
-            RoomItem roomItem = goRoomItem.GetComponent<RoomItem>();
-            ////가져온 컴포넌트가 가지고 있는 SetInfo를 함수 실행
-            //roomItem.SetInfo(info.Name, info.PlayerCount, info.MaxPlayers);
-
+            GameObject go = Instantiate(roomItemFactory, rtContent);
+            // 만들어진 roomItem 의 내용변경
+            // RoomItem 컴포넌트 가져오자
+            RoomItem roomItem = go.GetComponent<RoomItem>();
+            
             // 커스텀 정보 중 방 이름 가져오자
             string roomName = (string)info.CustomProperties["room_Name"];
             // 커스텀 정보 중 잠금 모드 가져오자
@@ -193,10 +198,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
             // 가져온 컴포넌트에 정보를 입력
             // 방이름(5/10)
+            //roomItem. = roomName + "(" + info.PlayerCount + "/" + info.MaxPlayers + ")";
+
             roomItem.SetContent(roomName, info.PlayerCount, info.MaxPlayers);
             // 잠금 모드 표현
             roomItem.SetLockMode(isLock);
 
+            // roomItem 이 클릭되었을 때 호출되는 함수 등록
             roomItem.onChangeRoomName = OnChangeRoomNameField;
         }
     }
