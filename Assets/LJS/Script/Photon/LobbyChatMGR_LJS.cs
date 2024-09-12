@@ -16,7 +16,7 @@ public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
     public TMP_InputField inputChat;
 
     // 채팅 채널
-    string currentChannel = "Block_Stand";
+    string currentChannel = "BlockStandChat";
 
     // 스크롤 뷰의 Content
     public RectTransform trContent;
@@ -25,7 +25,9 @@ public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
     
 void Start()
     {
-        
+        inputChat.onSubmit.AddListener(onSubmit);
+
+        Connect();
     }
 
     // Update is called once per frame
@@ -54,8 +56,52 @@ void Start()
         ChatClient = new ChatClient(this);
         // 닉네임
         ChatClient.AuthValues = new Photon.Chat.AuthenticationValues(PhotonNetwork.NickName);
+         
         // 연결 시도
         ChatClient.ConnectUsingSettings(chatAppSettings);
+        
+    }
+
+    void onSubmit(string s)
+    {
+        // 만약에 s의 길이가 0이면 함수를 낙자ㅏ
+        if (s.Length == 0) return;
+
+        // 귓속말인 판단
+        // /w 아이디 메시지 (/w NickName 귓속말메시지)
+        string[] splitchat = s.Split(" ", 3);
+
+        if (splitchat[0] == "/w")
+        {
+            //귓속말을 보내자
+            // splite[1] : 아이디 , splite[2]:내용
+            ChatClient.SendPrivateMessage(splitchat[1], splitchat[2]);
+        }
+        else
+        {
+            print(currentChannel + "문제");
+            //채팅을 보내자.
+            ChatClient.PublishMessage(currentChannel, s);
+        }
+
+        // 채팅 입력란 초기화
+        inputChat.text = "";
+
+    }
+
+    void createChatItem(string sender, object message, Color color)
+    {
+        // ChatItem 생성(Content 의 자식으로)
+        GameObject go = Instantiate(chatItemFactory, trContent);
+        // 생성된 게임오브젝트에서 ChatItem 컴포넌트 가져온다
+        ChatItem chatItem = go.AddComponent<ChatItem>();
+        // 가져온 컴포넌트에서 SetText 함수 실행
+        chatItem.SetText(sender + ":"+message);
+        // TMP_Text 컴포넌트 가져오자
+        TMP_Text text = go.GetComponent<TMP_Text>();
+        // 가져온 컴포넌트를 이용해서 색을 바꾸자
+        text.color = color;
+
     }
 
     public void DebugReturn(DebugLevel level, string message)
@@ -91,10 +137,12 @@ void Start()
             chatItem.SetText(senders[i] + ":" + messages[i]);
         }
     }
-
+    // 누군가 나한테 개인메시지 보냈을 때
     public void OnPrivateMessage(string sender, object message, string channelName)
     {
+        createChatItem(sender, message, Color.green);
     }
+
     // 채팅 채널에 접속이 성공했을 때 들어오는 함수
     public void OnSubscribed(string[] channels, bool[] results)
     {
