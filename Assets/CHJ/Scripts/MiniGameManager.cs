@@ -110,7 +110,7 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
     void RpcOnePlayerEndGameUI()
     {
         // UI 변경 (RPCTarget.All)
-        print(PhotonNetwork.NickName + "님이 미니게임을 끝냈습니다!");
+        print(photonView.Owner.NickName + "님이 미니게임을 끝냈습니다!");
     }
 
     // 모두가 미니게임을 끝냈는지 체크한다.

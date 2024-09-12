@@ -94,7 +94,11 @@ public class AlarmUI : MonoBehaviourPunCallbacks
         if (!photonView.IsMine) return;
         print(" new player entered room!");
 
-        photonView.RPC(nameof(InitAlarm), newPlayer, AlarmManager.instance.GetAlarmByIndex(0).hour, AlarmManager.instance.GetAlarmByIndex(0).minute);
+        // 알람이 있으면!
+        if (AlarmManager.instance.alarmCount > 0)
+        {
+            photonView.RPC(nameof(InitAlarm), newPlayer, AlarmManager.instance.GetAlarmByIndex(0).hour, AlarmManager.instance.GetAlarmByIndex(0).minute);
+        }
     }
 
     
