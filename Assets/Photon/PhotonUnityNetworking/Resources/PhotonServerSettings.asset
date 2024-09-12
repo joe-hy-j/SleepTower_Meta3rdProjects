@@ -45,6 +45,10 @@ MonoBehaviour:
   - HeresWhy
   - InitAlarm
   - RpcAddAlarm
+  - EndPlayerCountUp
+  - RpcEndAlarm
+  - RpcOnePlayerEndGameUI
+  - RpcSetGameType
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

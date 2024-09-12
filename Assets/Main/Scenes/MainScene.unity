@@ -200,6 +200,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5127745374264678909, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5274830174411569377, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -294,6 +299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955136169081096905, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1024,7 +1034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memorySelectBtn: {fileID: 1704779105}
   pillowSelectBtn: {fileID: 1046403460}
-  mediaPipeSelectBtn: {fileID: 0}
+  mediaPipeSelectBtn: {fileID: 1653424860}
   alarmSetBtn: {fileID: 897467274}
 --- !u!1 &1545158643 stripped
 GameObject:
@@ -1618,6 +1628,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2131692661}
+    - target: {fileID: 7852103196006886426, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+        type: 3}
+      propertyPath: m_Text
+      value: "\uB3D9\uC791\n\uAC8C\uC784"
+      objectReference: {fileID: 0}
     - target: {fileID: 7904005269766451783, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1709,6 +1724,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1653424860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3292297087233103882, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1653424856}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1675838249 stripped
