@@ -7,7 +7,11 @@ public class BoardManager : MonoBehaviour
     public GameObject btn_Board;
     public GameObject highLight;
     public GameObject boardUI;
-
+    public GameObject postIt;
+    public GameObject photo;
+    public RectTransform slots;
+    int postCount;
+    int photoCount;
 
     void Start()
     {
@@ -45,5 +49,19 @@ public class BoardManager : MonoBehaviour
     public void CloseBoard()
     {
         boardUI.SetActive(false);
+    }
+
+    public void AddPost()
+    {
+        postCount++;
+        if (postCount > 4) return;
+        Instantiate(postIt, slots);
+    }
+
+    public void AddPhoto()
+    {
+        photoCount++;
+        if (photoCount > 4) return;
+        Instantiate(photo, slots);
     }
 }
