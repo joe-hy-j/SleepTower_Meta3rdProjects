@@ -841,6 +841,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn_Board: {fileID: 0}
   highLight: {fileID: 2160550195112424610}
+  boardUI: {fileID: 0}
+  postIt: {fileID: 5819521872079683132, guid: 98dd512795c630048a01638a25bc446c, type: 3}
+  photo: {fileID: 326916917966949444, guid: 7fbf301a0fffa624bb4d38b43362e994, type: 3}
+  slots: {fileID: 0}
 --- !u!1 &5705846936455079046
 GameObject:
   m_ObjectHideFlags: 0
