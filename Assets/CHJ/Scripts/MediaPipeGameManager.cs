@@ -18,14 +18,10 @@ public class MediaPipeGameManager : MonoBehaviour
     Button startButton;
     Text infoText;
 
-    private void Start()
-    {
-        InitializeGame();
-    }
-
     private void Update()
     {
         if (!isGameStart) return;
+
         gesture = SocketManager.instance.gesture;
 
         if (CheckAnswer())
@@ -33,7 +29,7 @@ public class MediaPipeGameManager : MonoBehaviour
             EndGame();
         }
     }
-    void InitializeGame()
+    public void InitializeGame()
     {
         // UI를 세팅한다.
         SetUIInterface();
@@ -82,7 +78,7 @@ public class MediaPipeGameManager : MonoBehaviour
     void EndGame()
     {
         isGameStart = false;
-
+        MiniGameManager.instance.MiniGameEnd();
         StartCoroutine(EndProcess());
     }
 

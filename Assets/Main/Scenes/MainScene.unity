@@ -662,6 +662,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2131692663}
+    - targetCorrespondingSourceObject: {fileID: 8466222085670997081, guid: fd2c4159ef50abe4697a18d80b6eab9f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2131692666}
+    - targetCorrespondingSourceObject: {fileID: 8466222085670997081, guid: fd2c4159ef50abe4697a18d80b6eab9f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2131692667}
   m_SourcePrefab: {fileID: 100100000, guid: fd2c4159ef50abe4697a18d80b6eab9f, type: 3}
 --- !u!114 &897467274 stripped
 MonoBehaviour:
@@ -1016,6 +1024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memorySelectBtn: {fileID: 1704779105}
   pillowSelectBtn: {fileID: 1046403460}
+  mediaPipeSelectBtn: {fileID: 0}
   alarmSetBtn: {fileID: 897467274}
 --- !u!1 &1545158643 stripped
 GameObject:
@@ -1738,6 +1747,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1709624963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1709624965}
+  - component: {fileID: 1709624964}
+  m_Layer: 0
+  m_Name: SocketManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1709624964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709624963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea2d24329a3b004e9e390d6838946f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  port: 5005
+  gesture:
+    v_gesture: 0
+    palm_visible: 0
+    v_sustained: 0
+    palm_sustained: 0
+--- !u!4 &1709624965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709624963}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 366.09375, y: 929.31384, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1731604929 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1239481662369941640, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
@@ -2054,6 +2113,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memoryGM: {fileID: 2131692664}
   pillowGM: {fileID: 2131692663}
+  mediaPipeGM: {fileID: 2131692666}
+--- !u!114 &2131692666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131692660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87464ea73d749a34bbfed7f5a0b4175a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonFactory: {fileID: 3451716587145322387, guid: 6a49b0868c6f0674f9d940aeb7f155b6,
+    type: 3}
+  textFactory: {fileID: 3726959435717578243, guid: e3f10a4aff7c6704fbd2110506815d55,
+    type: 3}
+--- !u!114 &2131692667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131692660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 5
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2067,3 +2165,4 @@ SceneRoots:
   - {fileID: 1835319591}
   - {fileID: 883531327}
   - {fileID: 1988235800}
+  - {fileID: 1709624965}

@@ -14,9 +14,13 @@ public class AlarmUI : MonoBehaviourPunCallbacks
     public TMP_InputField hourInput;
     public TMP_InputField minuteInput;
 
+    Coroutine alarmCoroutine;
+
+    WaitForSeconds wfs1 = new WaitForSeconds(1);
+
     private void Start()
     {   
-        StartCoroutine(alarmOnCheckProcess());
+        alarmCoroutine = StartCoroutine(alarmOnCheckProcess());
     }
 
     IEnumerator alarmOnCheckProcess() {
@@ -30,7 +34,7 @@ public class AlarmUI : MonoBehaviourPunCallbacks
                     print("알람이 울렸습니다");
                     AlarmManager.instance.OnAlarm();
                 }
-                yield return new WaitForSeconds(1);
+                yield return wfs1;
             }
             else
             {
@@ -41,7 +45,7 @@ public class AlarmUI : MonoBehaviourPunCallbacks
 
     private void OnDestroy()
     {
-        StopAllCoroutines();
+        StopCoroutine(alarmCoroutine);
     }
     /// <summary>
     /// 버튼을 통해서 호출하는 함수입니다.
@@ -49,7 +53,7 @@ public class AlarmUI : MonoBehaviourPunCallbacks
     public void AddAlarm()
     {
         // 내가 만약 방장이 아니면
-        if (!photonView.IsMine)
+        if (!PhotonNetwork.IsMasterClient)
         {
             // UI에 방장만 알람을 설정할 수 있습니다 띄우기
             Debug.LogError("방장만 알람을 설정할 수 있습니다");

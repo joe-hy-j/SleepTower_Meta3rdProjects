@@ -181,7 +181,7 @@ public class PillowGameManager : MonoBehaviour
 
     void EndGame()
     {
-        AlarmManager.instance.OffAlarm();
+        MiniGameManager.instance.MiniGameEnd();
         StartCoroutine(EndGameProcess());
     }
     

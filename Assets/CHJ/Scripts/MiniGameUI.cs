@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class MiniGameUI : MonoBehaviour
     [Header("Buttons")]
     public Button memorySelectBtn;
     public Button pillowSelectBtn;
+    public Button mediaPipeSelectBtn;
     public Button alarmSetBtn;
 
     MiniGameManager.GameType selectedGameType;
@@ -23,9 +25,16 @@ public class MiniGameUI : MonoBehaviour
         {
             selectedGameType = MiniGameManager.GameType.PillowGame;
         });
+        mediaPipeSelectBtn.onClick.AddListener(() =>
+        {
+            selectedGameType = MiniGameManager.GameType.MemoryGame;
+        });
 
         alarmSetBtn.onClick.AddListener(() =>
         {
+            // 방장만 게임을 설정할 수 있습니다.
+            if (!PhotonNetwork.IsMasterClient) return;
+
             if (selectedGameType != MiniGameManager.GameType.None)
                 MiniGameManager.instance.SetGameType(selectedGameType);
             else
