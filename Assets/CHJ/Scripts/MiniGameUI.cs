@@ -27,13 +27,13 @@ public class MiniGameUI : MonoBehaviour
         });
         mediaPipeSelectBtn.onClick.AddListener(() =>
         {
-            selectedGameType = MiniGameManager.GameType.MemoryGame;
+            selectedGameType = MiniGameManager.GameType.MediaPipeGame;
         });
 
         alarmSetBtn.onClick.AddListener(() =>
         {
             // 방장만 게임을 설정할 수 있습니다.
-            if (!PhotonNetwork.IsMasterClient) return;
+            if (!PhotonNetwork.IsMasterClient) { return; }
 
             if (selectedGameType != MiniGameManager.GameType.None)
                 MiniGameManager.instance.SetGameType(selectedGameType);
