@@ -1,9 +1,8 @@
-using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardManager : MonoBehaviourPun
+public class BoardManager : MonoBehaviour
 {
     public GameObject btn_Board;
     public GameObject highLight;
