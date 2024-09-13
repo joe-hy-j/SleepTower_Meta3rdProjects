@@ -1,10 +1,12 @@
+using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 //using Photon.Pun;
 
-public class ChatManager : MonoBehaviour
+public class ChatManager : MonoBehaviourPun
 {
     // Input Field
     public TMP_InputField inputChat;
@@ -49,17 +51,20 @@ public class ChatManager : MonoBehaviour
 
     void Update()
     {
-        // 말풍선이 활성화 되어 있을 경우
-        if (onBubble)
+        if (photonView.IsMine)
         {
-            currentTime += Time.deltaTime;  // 시간 흐름
-
-            // 시간이 3초를 넘을경우
-            if (currentTime >= 3)
+            // 말풍선이 활성화 되어 있을 경우
+            if (onBubble)
             {
-                speechBubble.SetActive(false);  // 말풍선 비활성화
-                onBubble = false;  // 말풍선 비활성화 상태
-                currentTime = 0;  // 시간 초기화
+                currentTime += Time.deltaTime;  // 시간 흐름
+
+                // 시간이 3초를 넘을경우
+                if (currentTime >= 3)
+                {
+                    speechBubble.SetActive(false);  // 말풍선 비활성화
+                    onBubble = false;  // 말풍선 비활성화 상태
+                    currentTime = 0;  // 시간 초기화
+                }
             }
         }
     }
@@ -74,17 +79,22 @@ public class ChatManager : MonoBehaviour
         //string nick = "<color=#" + ColorUtility.ToHtmlStringRGB(nickNameColor) + ">" + PhotonNetwork.NickName + "</color>";
         //string chat = nick + " : " + s;
 
-        currentTime = 0;  // 시간 초기화
-        onBubble = true;  // 말풍선 활성화 상태
-        speechBubble.SetActive(true);  // 말풍선 활성화
-        text_speechBubble.text = s;  // 말풍선 텍스트를 채팅에 입력한 텍스트로 출력
+        if (photonView.IsMine)
+        {
+            currentTime = 0;  // 시간 초기화
+            onBubble = true;  // 말풍선 활성화 상태
+            speechBubble.SetActive(true);  // 말풍선 활성화
+            text_speechBubble.text = s;  // 말풍선 텍스트를 채팅에 입력한 텍스트로 출력
+        }
 
-        AddChat(s);  // 채팅 출력
+        // AddChat Rpc 함수 호출
+        photonView.RPC(nameof(AddChat), RpcTarget.All, s);
 
         // 강제로 inputChat을 활성화하자
         inputChat.ActivateInputField();
     }
 
+    [PunRPC]
     void AddChat(string chat)
     {
         // 새로운 채팅이 추가되기 전의 Content의 H 값을 저장

@@ -1,8 +1,9 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardManager : MonoBehaviour
+public class BoardManager : MonoBehaviourPun
 {
     public GameObject btn_Board;
     public GameObject highLight;
@@ -25,7 +26,7 @@ public class BoardManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             highLight.SetActive(true);
             btn_Board.SetActive(true);
@@ -48,6 +49,7 @@ public class BoardManager : MonoBehaviour
 
     public void CloseBoard()
     {
+        
         boardUI.SetActive(false);
     }
 
