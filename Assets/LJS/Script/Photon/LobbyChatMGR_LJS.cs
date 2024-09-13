@@ -27,6 +27,11 @@ public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
 
     void Awake()
     {
+    }
+
+    void Start()
+    {
+
         inputChat.onSubmit.AddListener(onSubmit);
 
         Connect();
@@ -62,7 +67,7 @@ public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
 
         // 연결 시도
         ChatClient.ConnectUsingSettings(chatAppSettings);
-
+         OnConnected();
     }
 
 

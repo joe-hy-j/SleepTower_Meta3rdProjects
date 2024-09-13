@@ -175,6 +175,11 @@ PrefabInstance:
       propertyPath: btn_wakeUp
       value: 
       objectReference: {fileID: 867081747}
+    - target: {fileID: 389813502357537360, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1011992686937840050, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
       propertyPath: grm
@@ -194,6 +199,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006872241961166850, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5067836946830031788, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
@@ -255,10 +265,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5509884453921167803, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6174476006138390858, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
       propertyPath: m_Name
       value: BackGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699816106122148773, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6764587863454771772, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
@@ -294,6 +314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073637913266066275, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8832808211643867983, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
