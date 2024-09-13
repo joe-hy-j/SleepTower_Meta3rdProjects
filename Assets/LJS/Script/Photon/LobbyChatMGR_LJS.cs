@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System;
 
 public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
 {
@@ -22,18 +23,20 @@ public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
     public RectTransform trContent;
     // ChatItem Prefab
     public GameObject chatItemFactory;
-    
-void Start()
+
+
+    void Awake()
     {
         inputChat.onSubmit.AddListener(onSubmit);
 
         Connect();
+         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void Connect()
@@ -56,15 +59,17 @@ void Start()
         ChatClient = new ChatClient(this);
         // 닉네임
         ChatClient.AuthValues = new Photon.Chat.AuthenticationValues(PhotonNetwork.NickName);
-         
+
         // 연결 시도
         ChatClient.ConnectUsingSettings(chatAppSettings);
-        
+
     }
+
+
 
     void onSubmit(string s)
     {
-        // 만약에 s의 길이가 0이면 함수를 낙자ㅏ
+        // 만약에 s의 길이가 0이면 함수를 나가자
         if (s.Length == 0) return;
 
         // 귓속말인 판단
@@ -79,7 +84,6 @@ void Start()
         }
         else
         {
-            print(currentChannel + "문제");
             //채팅을 보내자.
             ChatClient.PublishMessage(currentChannel, s);
         }
@@ -96,7 +100,7 @@ void Start()
         // 생성된 게임오브젝트에서 ChatItem 컴포넌트 가져온다
         ChatItem chatItem = go.AddComponent<ChatItem>();
         // 가져온 컴포넌트에서 SetText 함수 실행
-        chatItem.SetText(sender + ":"+message);
+        chatItem.SetText(sender + ":" + message);
         // TMP_Text 컴포넌트 가져오자
         TMP_Text text = go.GetComponent<TMP_Text>();
         // 가져온 컴포넌트를 이용해서 색을 바꾸자
@@ -128,7 +132,7 @@ void Start()
     {
         for (int i = 0; i < senders.Length; i++)
         {
-            print(senders[i] + ":"+messages[i]);
+            print(senders[i] + ":" + messages[i]);
             // chatItem 생성(Content 의 자식으로)
             GameObject go = Instantiate(chatItemFactory, trContent);
             // 생성된 게임 오브젝트에서 ChatItem 컴포넌트 가져온다.
@@ -154,9 +158,9 @@ void Start()
     // 채팅 채널에서 나갔을 때 들어오는 함수
     public void OnUnsubscribed(string[] channels)
     {
-        for(int i = 0;i < channels.Length; i++)
+        for (int i = 0; i < channels.Length; i++)
         {
-            print(channels[i]+"채널에서 나갔습니다");
+            print(channels[i] + "채널에서 나갔습니다");
         }
     }
 
