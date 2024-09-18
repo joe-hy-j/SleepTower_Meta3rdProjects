@@ -41,6 +41,10 @@ public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
     // Update is called once per frame
     void Update()
     {
+        if (ChatClient != null)
+        {
+            ChatClient.Service();
+        }
 
     }
 
