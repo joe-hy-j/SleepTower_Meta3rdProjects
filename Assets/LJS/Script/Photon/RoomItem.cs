@@ -32,13 +32,18 @@ public class RoomItem : MonoBehaviour
 
     public void OnClick()
     {
+        GameObject go = GameObject.Find("InputRoomName (1)");
 
-        // onChangeRoomName 가 null 이 아니라면 
-        if (onChangeRoomName != null)
-        {
-            onChangeRoomName(realRoomName);
+        TMP_InputField inputField = go.GetComponent<TMP_InputField>();
 
-        }
+        inputField.text = realRoomName;
+
+        //// onChangeRoomName 가 null 이 아니라면 
+        //if (onChangeRoomName != null)
+        //{
+        //    onChangeRoomName(realRoomName);
+
+        //}
 
 
     }
