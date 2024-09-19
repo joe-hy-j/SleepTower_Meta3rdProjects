@@ -16,7 +16,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     //Input PassWord
     public TMP_InputField inputPassWord;
     //방 참여 버튼
-    public Button btnJoinRoom;
+    public Button ExitRoomBtn;
     //방 생성 버튼
     public Button btnCreateRoom;
 
@@ -30,7 +30,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     void Start()
     {
         // 방 참여, 생성 비활성화
-        btnJoinRoom.interactable = false;
+        ExitRoomBtn.interactable = true;
         btnCreateRoom.interactable = false;
 
         //포톤 로비 진입 문제나면 바로 삭제
@@ -46,7 +46,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     void OnValueChangedRoomName(string roomName)
     {
         //참여 버튼 활성/ 비활성화
-        btnJoinRoom.interactable = roomName.Length > 0;
+       // btnJoinRoom.interactable = roomName.Length > 0;
         //생성 버튼 활성/ 비활성화
         btnCreateRoom.interactable = roomName.Length > 0 && inputMaxPlayer.text.Length > 0;
     }
@@ -179,14 +179,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     // RoomItem Prefab
     public GameObject roomItemFactory;
     // RoomListView -> Content -> RectTransform
-    public RectTransform rtContent;
+    public RectTransform panel;
     void CreateRoomList()
     {
         foreach (RoomInfo info in roomCache.Values)
         {
             
             //roomItem prefav 을 이용해서 roomItem 을 만든다. -- 만듬과 동시에 부모설정 UI 크기때문
-            GameObject go = Instantiate(roomItemFactory, rtContent);
+            GameObject go = Instantiate(roomItemFactory,panel);
             // 만들어진 roomItem 의 내용변경
             // RoomItem 컴포넌트 가져오자
             RoomItem roomItem = go.GetComponent<RoomItem>();
@@ -211,9 +211,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     void RemoveRoomList()
     {
         // rtContent 에 있는 자식 GameObject 를 모두 삭제
-        for (int i = 0; i < rtContent.childCount; i++)
+        for (int i = 0; i < panel.childCount; i++)
         {
-            Destroy(rtContent.GetChild(i).gameObject);
+            Destroy(panel.GetChild(i).gameObject);
         }
 
     }
