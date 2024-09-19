@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using System;
+
 
 public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
 {
@@ -35,7 +35,7 @@ public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
         inputChat.onSubmit.AddListener(onSubmit);
 
         Connect();
-         
+
     }
 
     // Update is called once per frame
@@ -45,11 +45,12 @@ public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
         {
             ChatClient.Service();
         }
-
+      
     }
 
     void Connect()
     {
+       
         AppSettings photonSettings = PhotonNetwork.PhotonServerSettings.AppSettings;
 
         //위 설정을 가지고 ChatAppSettings셋팅
@@ -71,7 +72,7 @@ public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
 
         // 연결 시도
         ChatClient.ConnectUsingSettings(chatAppSettings);
-         OnConnected();
+        //OnConnected();
     }
 
 
@@ -114,7 +115,6 @@ public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
         TMP_Text text = go.GetComponent<TMP_Text>();
         // 가져온 컴포넌트를 이용해서 색을 바꾸자
         text.color = color;
-
     }
 
     public void DebugReturn(DebugLevel level, string message)
@@ -142,12 +142,9 @@ public class LobbyChatMGR_LJS : MonoBehaviour, IChatClientListener
         for (int i = 0; i < senders.Length; i++)
         {
             print(senders[i] + ":" + messages[i]);
-            // chatItem 생성(Content 의 자식으로)
-            GameObject go = Instantiate(chatItemFactory, trContent);
-            // 생성된 게임 오브젝트에서 ChatItem 컴포넌트 가져온다.
-            ChatItem chatItem = go.GetComponent<ChatItem>();
-            // 가져온 컴포넌트에서 SetText 함수 실행
-            chatItem.SetText(senders[i] + ":" + messages[i]);
+            
+            createChatItem(senders[i], messages[i], Color.white);
+            
         }
     }
     // 누군가 나한테 개인메시지 보냈을 때
