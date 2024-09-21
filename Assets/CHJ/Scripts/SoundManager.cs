@@ -1,11 +1,31 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : MonoBehaviourPun
 {
+    public static SoundManager instance;
+
+    private void Awake()
+    {
+        if(instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
+
     public AudioSource alarmSound;
+    public AudioSource[] emogeSound;
+    public AudioSource pillowSound;
+
+    public AudioMixer audioMixer;
+    [SerializeField]
+    float alarmVolume = 0.0f;
+    float alarmIncSize = 5.0f;
+
 
     private void Start()
     {
@@ -21,4 +41,31 @@ public class SoundManager : MonoBehaviour
     {
         alarmSound.Stop();
     }
+
+    public void EmogeSoundPlay(int emogeIdx)
+    {
+        photonView.RPC(nameof(RpcEmogeSoundPlay), RpcTarget.All, emogeIdx);
+    }
+
+    [PunRPC]
+    void RpcEmogeSoundPlay(int emogeIdx)
+    {
+        if(emogeIdx < emogeSound.Length)
+        {
+            emogeSound[emogeIdx].Play();
+        }
+    }
+
+    public void PillowSoundPlay()
+    {
+        photonView.RPC(nameof(RpcPillowSoundPlay), RpcTarget.All);
+    }
+
+    [PunRPC]
+    void RpcPillowSoundPlay()
+    {
+        pillowSound.Play();
+    }
+
+
 }

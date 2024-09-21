@@ -16,21 +16,14 @@ public class MemoryGameUIManager : MemoryGameManager
     //user가 입력을 할 수 있는 상황인지 확인
     bool canUserInput = false;
 
-    Button startButton;
     Text winText;
 
     public void SetUIInterface()
     {
         winText = Instantiate(textFactory, GameObject.Find("GameCanvas").transform).GetComponent<Text>();
         winText.gameObject.SetActive(false);
-        winText.text = "이겼습니다!";
-        startButton = Instantiate(buttonFactory, GameObject.Find("GameCanvas").transform).GetComponent<Button>();
-
-        startButton.onClick.AddListener(() =>
-        {
-            StartGame();
-            startButton.interactable = false;
-        });
+        winText.text = "게임 종료...";
+        StartGame();
     }
     //게임 시작하는 함수
     public void StartGame()
@@ -86,7 +79,7 @@ public class MemoryGameUIManager : MemoryGameManager
         {
             for(int j = 0; j < blocks.GetLength(1); j++)
             {
-                blocks[i,j] = Instantiate(blockFactory, new Vector3(ColomnToXPos(i), 0, RowToZPos(j)), Quaternion.identity);
+                blocks[i,j] = Instantiate(blockFactory, new Vector3(ColomnToXPos(i), 2.5f, RowToZPos(j)), Quaternion.identity);
                 blocks[i,j].GetComponent<BlockClickedAction>().SetColumnAndRow(i, j);
             }
         }
@@ -116,7 +109,6 @@ public class MemoryGameUIManager : MemoryGameManager
     {
         base.EndGame();
         MiniGameManager.instance.MiniGameEnd();
-        Destroy(startButton.gameObject);
         RemoveAllBlocks();
         StartCoroutine(ShowTextProcess(1));
     }
