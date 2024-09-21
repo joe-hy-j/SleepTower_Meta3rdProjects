@@ -26,15 +26,6 @@ public class ChatManager : MonoBehaviourPun
     // 닉네임 색상
     //Color nickNameColor;
 
-    // 말풍선
-    public GameObject speechBubble;
-    // 말풍선 text
-    public TMP_Text text_speechBubble;
-    // 시간초
-    float currentTime = 0;
-    // 말풍선 활성화 여부
-    bool onBubble = false;
-
 
     void Start()
     {
@@ -47,26 +38,14 @@ public class ChatManager : MonoBehaviourPun
         inputChat.onSubmit.AddListener(OnSummit);
         // inputChat 포커싱을 잃을 때 호출되는 함수 등록
         inputChat.onEndEdit.AddListener(OnEndEdit);
+
+        //speechBubble = roomManager.mySpeechBubble;
+        //text_speechBubble = speechBubble.GetComponentInChildren<TMP_Text>();
     }
 
     void Update()
     {
-        if (photonView.IsMine)
-        {
-            // 말풍선이 활성화 되어 있을 경우
-            if (onBubble)
-            {
-                currentTime += Time.deltaTime;  // 시간 흐름
 
-                // 시간이 3초를 넘을경우
-                if (currentTime >= 3)
-                {
-                    speechBubble.SetActive(false);  // 말풍선 비활성화
-                    onBubble = false;  // 말풍선 비활성화 상태
-                    currentTime = 0;  // 시간 초기화
-                }
-            }
-        }
     }
 
     public void OnSummit(string s)
@@ -79,13 +58,13 @@ public class ChatManager : MonoBehaviourPun
         //string nick = "<color=#" + ColorUtility.ToHtmlStringRGB(nickNameColor) + ">" + PhotonNetwork.NickName + "</color>";
         //string chat = nick + " : " + s;
 
-        if (photonView.IsMine)
-        {
-            currentTime = 0;  // 시간 초기화
-            onBubble = true;  // 말풍선 활성화 상태
-            speechBubble.SetActive(true);  // 말풍선 활성화
-            text_speechBubble.text = s;  // 말풍선 텍스트를 채팅에 입력한 텍스트로 출력
-        }
+        //if (photonView.IsMine)
+        //{
+        //    currentTime = 0;  // 시간 초기화
+        //    onBubble = true;  // 말풍선 활성화 상태
+        //    speechBubble.SetActive(true);  // 말풍선 활성화
+        //    text_speechBubble.text = s;  // 말풍선 텍스트를 채팅에 입력한 텍스트로 출력
+        //}
 
         // AddChat Rpc 함수 호출
         photonView.RPC(nameof(AddChat), RpcTarget.All, s);

@@ -14,24 +14,25 @@ public class EmogeSystem : MonoBehaviourPun
 
     void Start()
     {
-        
+        if (photonView.IsMine)
+        {
+
+        }
+
     }
 
     void Update()
     {
-        if (photonView.IsMine)
+        // 이모티콘이 활성화되어 있을경우
+        if (onEmo)
         {
-            // 이모티콘이 활성화되어 있을경우
-            if (onEmo)
+            currentTime += Time.deltaTime;  // 시간초 시작
+                                            // 시간초가 3초 경과할 경우
+            if (currentTime >= 3)
             {
-                currentTime += Time.deltaTime;  // 시간초 시작
-                                                // 시간초가 3초 경과할 경우
-                if (currentTime >= 3)
-                {
-                    emoGroup.SetActive(false);  // 이모티콘 부모 객체 비활성화 (모든 이모티콘 비활성화)
-                    onEmo = false;  // 이모티콘 비활성화 상태
-                    currentTime = 0;  // 시간초 초기화
-                }
+                emoGroup.SetActive(false);  // 이모티콘 부모 객체 비활성화 (모든 이모티콘 비활성화)
+                onEmo = false;  // 이모티콘 비활성화 상태
+                currentTime = 0;  // 시간초 초기화
             }
         }
     }
@@ -93,30 +94,34 @@ public class EmogeSystem : MonoBehaviourPun
     // 원하는 이모티콘만 활성화 하고 나머지는 비활성화 시키는 함수
     void ActiveOnlyOneEmoge(int WantToActive)  // WantToActive = 활성화 하고자 하는 이모티콘의 리스트 인덱스 숫자
     {
-        if (photonView.IsMine)
+        photonView.RPC(nameof(RpcActiveOnlyOneEmoge),RpcTarget.All,WantToActive);
+    }
+    [PunRPC]
+    void RpcActiveOnlyOneEmoge(int WantToActive)
+    {
+        for (int i = 0; i < emoges.Count; i++)  // 저장된 모든 이모티콘의 수만큼 계산
         {
-            for (int i = 0; i < emoges.Count; i++)  // 저장된 모든 이모티콘의 수만큼 계산
+            if (i == WantToActive)  // 원하는 이모티콘의 인덱스 숫자가 i 라면
             {
-                if (i == WantToActive)  // 원하는 이모티콘의 인덱스 숫자가 i 라면
-                {
-                    emoges[i].SetActive(true);  // i 에 해당하는 인덱스의 이모티콘만 활성화
-                    SoundManager.instance.EmogeSoundPlay(i);
-                }
-                else
-                {
-                    emoges[i].SetActive(false);  // i 에 남은 나머지 인덱스의 이모티콘들은 비활성화
-                }
+                emoges[i].SetActive(true);  // i 에 해당하는 인덱스의 이모티콘만 활성화
+                SoundManager.instance.EmogeSoundPlay(i);
+            }
+            else
+            {
+                emoges[i].SetActive(false);  // i 에 남은 나머지 인덱스의 이모티콘들은 비활성화
             }
         }
     }
-
     void EmoActive()  // 이모티콘이 활성화 상태일때 호출할 함수
     {
-        if (photonView.IsMine)
-        {
-            emoGroup.SetActive(true);  // 이모티콘들의 부모 객체 활성화
-            onEmo = true;  // 이모티콘 활성화 상태
-            currentTime = 0;  // 시간초 초기화
-        }
+        photonView.RPC(nameof(RpcEmoActive), RpcTarget.All);
+    }
+
+    [PunRPC]
+    void RpcEmoActive()
+    {
+        emoGroup.SetActive(true);  // 이모티콘들의 부모 객체 활성화
+        onEmo = true;  // 이모티콘 활성화 상태
+        currentTime = 0;  // 시간초 초기화
     }
 }
