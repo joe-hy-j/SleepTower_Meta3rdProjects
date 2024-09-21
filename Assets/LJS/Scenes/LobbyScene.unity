@@ -1661,7 +1661,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1433740764}
         m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: JoinRoom
+        m_MethodName: JoinRoom2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3842,6 +3842,8 @@ MonoBehaviour:
   inputPassWord: {fileID: 142076611}
   ExitRoomBtn: {fileID: 894734784}
   btnCreateRoom: {fileID: 1644968099}
+  joinInputRoomName: {fileID: 1832019645}
+  joinInputPassWord: {fileID: 1575616232}
   roomItemFactory: {fileID: 2145523417544201494, guid: 55cc898095228244f801bcdeb0c7653a,
     type: 3}
   panel: {fileID: 1915336620}

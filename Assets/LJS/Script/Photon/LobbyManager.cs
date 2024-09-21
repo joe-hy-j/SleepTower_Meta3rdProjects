@@ -20,6 +20,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     //방 생성 버튼
     public Button btnCreateRoom;
 
+    // 참여하기 Input Room Name
+    public TMP_InputField joinInputRoomName;
+    // 참여하기 Input PassWord
+    public TMP_InputField joinInputPassWord;
 
 
     // 방 정보 가지고 있는 DIctionary
@@ -106,6 +110,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         // 방 입장 요청
         PhotonNetwork.JoinRoom(inputRoomName.text + inputPassWord.text);
 
+    }
+
+    public void JoinRoom2()
+    {
+        PhotonNetwork.JoinRoom(joinInputRoomName.text + joinInputPassWord.text);
     }
 
     //방 입장 완료시 호출되는 함수
