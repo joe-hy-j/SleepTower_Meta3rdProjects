@@ -678,11 +678,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1769335083}
-    - target: {fileID: 754181886168225546, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 837431370801494877, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
       propertyPath: m_Name
@@ -903,6 +898,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6570419172590490966, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6891986758505891699, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
       propertyPath: speechBubble
@@ -951,7 +951,7 @@ PrefabInstance:
     - target: {fileID: 7904005269766451783, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00013941526
+      value: -0.000026226044
       objectReference: {fileID: 0}
     - target: {fileID: 8014147965727897267, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
