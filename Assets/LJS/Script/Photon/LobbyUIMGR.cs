@@ -13,6 +13,17 @@ public class LobbyUIMGR : MonoBehaviour
     public Button CreateRoomBtn;
     public GameObject RoomCreate;
     public Button exitBtn;
+
+    public GameObject img1;
+    public Button btn1;
+    public GameObject img2;
+    public Button btn2;
+    public GameObject img3;
+    public Button btn3;
+    public GameObject img4;
+    public Button btn4;
+
+
     bool createComplete = false;
 
     int currentPage = 1, maxPage, multiple;
@@ -21,6 +32,7 @@ public class LobbyUIMGR : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+  
         // 최대페이지
         maxPage = (myList.Count % CellBtn.Length == 0) ? myList.Count / CellBtn.Length : myList.Count / CellBtn.Length + 1;
 
@@ -29,6 +41,7 @@ public class LobbyUIMGR : MonoBehaviour
         NextBtn.interactable = (currentPage >= maxPage) ? false : true;
 
         RoomCreate.SetActive(false);
+
     }
 
     // ◀버튼 -2 , ▶버튼 -1 , 셀 숫자
@@ -64,5 +77,29 @@ public class LobbyUIMGR : MonoBehaviour
             RoomCreate.SetActive(false);
             createComplete = false;
         }
+    }
+
+    public void OnBtn1Click()
+    {
+        btn1.interactable = false;  // 버튼 비활성화
+        img1.SetActive(false);      // 해당 이미지 비활성화
+    }
+
+    public void OnBtn2Click()
+    {
+        btn2.interactable = false;
+        img2.SetActive(false);
+    }
+
+    public void OnBtn3Click()
+    {
+        btn3.interactable = false;
+        img3.SetActive(false);
+    }
+
+    public void OnBtn4Click()
+    {
+        btn4.interactable = false;
+        img4.SetActive(false);
     }
 }
