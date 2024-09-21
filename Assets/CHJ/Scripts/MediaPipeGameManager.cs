@@ -62,7 +62,7 @@ public class MediaPipeGameManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            UnityEngine.Debug.LogError("Unable to launch app: " + e.Message);
+            UnityEngine.Debug.Log("Unable to launch app: " + e.Message);
         }
     }
 

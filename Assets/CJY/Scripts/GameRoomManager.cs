@@ -16,12 +16,19 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
     public GameObject btn_ChatOff;  // 채팅 비활성화 버튼
 
     public Transform spawnCenter;
+    public GameObject myPlayer;
+    public EmogeSystem myEmoge;
 
 
+    private void Awake()
+    {
+        myPlayer = PhotonNetwork.Instantiate("Player", spawnCenter.position, Quaternion.identity);
+        myEmoge = myPlayer.GetComponentInChildren<EmogeSystem>();
+    }
     void Start()
     {
         isSleepAll = false;  // 변수 초기화
-        PhotonNetwork.Instantiate("Player", spawnCenter.position, Quaternion.identity);
+
     }
 
     void Update()
