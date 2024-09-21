@@ -100,6 +100,7 @@ public class EmogeSystem : MonoBehaviourPun
                 if (i == WantToActive)  // 원하는 이모티콘의 인덱스 숫자가 i 라면
                 {
                     emoges[i].SetActive(true);  // i 에 해당하는 인덱스의 이모티콘만 활성화
+                    SoundManager.instance.EmogeSoundPlay(i);
                 }
                 else
                 {
