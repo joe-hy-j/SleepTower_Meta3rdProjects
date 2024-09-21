@@ -15,10 +15,13 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
     public GameObject btn_ChatOn;  // 채팅 활성화 버튼
     public GameObject btn_ChatOff;  // 채팅 비활성화 버튼
 
+    public Transform spawnCenter;
+
 
     void Start()
     {
         isSleepAll = false;  // 변수 초기화
+        PhotonNetwork.Instantiate("Player", spawnCenter.position, Quaternion.identity);
     }
 
     void Update()

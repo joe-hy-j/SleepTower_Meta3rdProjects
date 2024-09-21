@@ -696,6 +696,10 @@ GameObject:
   - component: {fileID: 5678063033539257001}
   - component: {fileID: 3851486582521000256}
   - component: {fileID: 6469695628635130253}
+  - component: {fileID: 4259629030275325167}
+  - component: {fileID: 7771306425115026248}
+  - component: {fileID: 3390840570048231778}
+  - component: {fileID: 5845148994522707458}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -817,6 +821,57 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &4259629030275325167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4438379041764442591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7ae9ff3ee49e54d967f5bf5d647b39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7771306425115026248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4438379041764442591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e16378ef00d8664fb0d23f9ed1ba8af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3390840570048231778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4438379041764442591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126494ae2a10a34499272ed97a6c9f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5845148994522707458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4438379041764442591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e45c351de1082942b1ca045baef442d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voiceView: {fileID: 3390840570048231778}
+  speakerImg: {fileID: 0}
+  speeckImg: {fileID: 0}
 --- !u!1 &5163654148921876614
 GameObject:
   m_ObjectHideFlags: 0
