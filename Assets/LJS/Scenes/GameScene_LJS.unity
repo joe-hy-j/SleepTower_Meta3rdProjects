@@ -961,6 +961,11 @@ PrefabInstance:
       propertyPath: btn_wakeUp
       value: 
       objectReference: {fileID: 1638963106}
+    - target: {fileID: 389813502357537360, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1011992686937840050, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
       propertyPath: grm
@@ -976,6 +981,11 @@ PrefabInstance:
       propertyPath: btn_wakeUp
       value: 
       objectReference: {fileID: 376287407}
+    - target: {fileID: 2006872241961166850, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5274830174411569377, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1026,10 +1036,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5509884453921167803, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6174476006138390858, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
       propertyPath: m_Name
       value: BackGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699816106122148773, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6764587863454771772, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
@@ -1061,6 +1081,11 @@ PrefabInstance:
       propertyPath: btn_wakeUp
       value: 
       objectReference: {fileID: 1486802284}
+    - target: {fileID: 7073637913266066275, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
