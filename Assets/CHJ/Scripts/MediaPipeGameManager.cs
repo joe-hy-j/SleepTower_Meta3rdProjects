@@ -29,10 +29,13 @@ public class MediaPipeGameManager : MonoBehaviour
             EndGame();
         }
     }
-    public void InitializeGame()
+    public void SetUIInterface()
     {
         // UI를 세팅한다.
-        SetUIInterface();
+        // 행동 표시하는 text 1개
+        infoText = Instantiate(textFactory, GameObject.Find("GameCanvas").transform).GetComponent<Text>();
+        infoText.text = "";
+        StartGame();
     }
 
     void StartGame()
@@ -84,9 +87,9 @@ public class MediaPipeGameManager : MonoBehaviour
 
     IEnumerator EndProcess()
     {
-        infoText.text = "성공했습니다!";  
+        infoText.text = "게임 종료...";  
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
         // UI를 없앤다
         Destroy(startButton.gameObject);
@@ -119,17 +122,6 @@ public class MediaPipeGameManager : MonoBehaviour
                 answerGesture.palm_sustained = true;
                 break;
         }
-    }
-
-    void SetUIInterface()
-    {
-        // 행동 표시하는 text 1개
-        infoText = Instantiate(textFactory, GameObject.Find("GameCanvas").transform).GetComponent<Text>();
-        infoText.text = "";
-        // start Button 1개
-        startButton = Instantiate(buttonFactory, GameObject.Find("GameCanvas").transform).GetComponent<Button>();
-        // button에 onClick 되면 StartGame이 실행되어야 한다.
-        startButton.onClick.AddListener(StartGame);
     }
 
 }
