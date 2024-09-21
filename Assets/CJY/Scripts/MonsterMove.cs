@@ -11,6 +11,8 @@ public class MonsterMove : MonoBehaviour
     float jumpSpeed = 10f;
     public Transform endPos;
 
+    bool isJump = false;
+
     void Start()
     {
         if(mm == null)
@@ -27,12 +29,17 @@ public class MonsterMove : MonoBehaviour
 
     void Update()
     {
-
+        if (isJump)
+        {
+            transform.position = Vector3.Lerp(transform.position, endPos.position, jumpSpeed * Time.deltaTime);
+            if(transform.position.y > endPos.position.y - 0.1f)
+                isJump = false;
+        }
     }
 
     public void MonsterJump()
     {
         anim.SetTrigger("Jump");
-        transform.position = Vector3.Lerp(transform.position, endPos.position, jumpSpeed * Time.deltaTime);
+        isJump = true;
     }
 }

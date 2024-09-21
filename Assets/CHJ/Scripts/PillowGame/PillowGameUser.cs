@@ -1,14 +1,16 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class PillowGameUser : MonoBehaviour
+public class PillowGameUser : MonoBehaviourPun
 {
-    public PillowGameManager gm;
     void Update()
     {
-        if (gm.isPlaying && Input.GetMouseButtonDown(0))
+        if (!photonView.IsMine) return;
+
+        if (MiniGameManager.instance.pillowGM.isPlaying && Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -18,9 +20,9 @@ public class PillowGameUser : MonoBehaviour
                 if (hit.transform.CompareTag("Pillow"))
                 {
 
-                    if (gm.RemovePillow(hit.transform.gameObject))
+                    if (MiniGameManager.instance.pillowGM.RemovePillow(hit.transform.gameObject))
                     {
-                        gm.OnClick();
+                        MiniGameManager.instance.pillowGM.OnClick();
                         Destroy(hit.transform.gameObject);
                     }
                 }

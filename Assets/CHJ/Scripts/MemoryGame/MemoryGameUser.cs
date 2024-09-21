@@ -1,12 +1,14 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MemoryGameUser : MonoBehaviour
+public class MemoryGameUser : MonoBehaviourPun
 {
-    public MemoryGameUIManager gm;
     void Update()
     {
+        if (!photonView.IsMine) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
