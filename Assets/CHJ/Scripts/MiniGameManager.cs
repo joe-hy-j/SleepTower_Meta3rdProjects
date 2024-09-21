@@ -77,7 +77,7 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
                 break;
             case GameType.MediaPipeGame:
                 //MediaPipe Game Manager를 실행한다.
-                mediaPipeGM.InitializeGame();
+                mediaPipeGM.SetUIInterface();
                 break;
             default:
                 break;
