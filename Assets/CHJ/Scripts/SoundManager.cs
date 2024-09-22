@@ -20,6 +20,7 @@ public class SoundManager : MonoBehaviourPun
     public AudioSource alarmSound;
     public AudioSource[] emogeSound;
     public AudioSource pillowSound;
+    public AudioSource monsterScreamSound;
 
     public AudioMixer audioMixer;
     [SerializeField]
@@ -31,6 +32,7 @@ public class SoundManager : MonoBehaviourPun
     {
         AlarmManager.instance.onAlarmUI += AlarmSoundPlay;
         AlarmManager.instance.offAlarmUI += AlarmSoundStop;
+        AlarmManager.instance.offAlarmUI += MonsterScreamSoundPlay;
     }
     void AlarmSoundPlay(object sender, EventArgs e)
     {
@@ -67,5 +69,8 @@ public class SoundManager : MonoBehaviourPun
         pillowSound.Play();
     }
 
-
+    public void MonsterScreamSoundPlay(object sender, EventArgs e)
+    {
+        monsterScreamSound.Play();
+    }
 }
