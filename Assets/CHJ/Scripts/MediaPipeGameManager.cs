@@ -15,7 +15,6 @@ public class MediaPipeGameManager : MonoBehaviour
 
     bool isGameStart =false;
 
-    Button startButton;
     Text infoText;
 
     private void Update()
@@ -41,7 +40,6 @@ public class MediaPipeGameManager : MonoBehaviour
     void StartGame()
     {
         isGameStart = true;
-        startButton.interactable = false;
         // 퀴즈 정답을 세팅한다.
         SetQuiz();
         // UI에 퀴즈를 표시한다.
@@ -92,7 +90,6 @@ public class MediaPipeGameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         // UI를 없앤다
-        Destroy(startButton.gameObject);
         Destroy(infoText.gameObject);
 
     }
