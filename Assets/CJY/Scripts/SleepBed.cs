@@ -8,6 +8,14 @@ public class SleepBed : MonoBehaviour
     public GameObject btn_wakeUp;  // 기상 버튼
     public GameRoomManager grm;  // GameRoomManager 스크립트 저장
     PlayerMove pm;  // PlayerMove 스크립트 가져오기;
+    public GameObject player;
+    public Transform sleepPos;
+    public Transform wakePos;
+
+
+    private void Start()
+    {
+    }
 
 
     private void OnTriggerEnter(Collider other)
@@ -33,6 +41,10 @@ public class SleepBed : MonoBehaviour
     {
         grm.sleepCount += 1;  // 현재 자는 인원수 1 증가
         pm.moveSpeed = 0;  // 플레이어의 움직임을 멈춘다
+
+        player.transform.position = sleepPos.position;
+        player.transform.rotation = sleepPos.rotation;
+
         btn_wakeUp.SetActive(true);  // 기상 버튼 활성화
         btn_sleep.SetActive(false);  // 잠들기 버튼 비활성화
     }
@@ -41,6 +53,10 @@ public class SleepBed : MonoBehaviour
     public void WakeUp()
     {
         grm.sleepCount -= 1;  // 현재 자는 인원수 1 감소
+
+        player.transform.position = wakePos.position;
+        player.transform.rotation = wakePos.rotation;
+
         btn_wakeUp.SetActive(false);  // 기상 버튼 비활성화
         pm.moveSpeed = 5;  // 플레이어 움직임 정상화
     }
