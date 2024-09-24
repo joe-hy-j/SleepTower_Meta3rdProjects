@@ -933,6 +933,11 @@ PrefabInstance:
       propertyPath: btn_Board
       value: 
       objectReference: {fileID: 1504961353}
+    - target: {fileID: 4432273877649995992, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3312aab671dc7ee4e9175953a8f4a595, type: 2}
     - target: {fileID: 5274830174411569377, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
       propertyPath: m_LocalPosition.x
