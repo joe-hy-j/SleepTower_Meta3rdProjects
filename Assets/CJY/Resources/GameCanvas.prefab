@@ -11357,7 +11357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00002336502}
+  m_AnchoredPosition: {x: 0, y: -0.000023305416}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1685395412277075186
@@ -11597,7 +11597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3584906, g: 0.06594875, b: 0.0935471, a: 0.28235295}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.28235295}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11661,8 +11661,6 @@ MonoBehaviour:
     type: 3}
   trContent: {fileID: 7904005269766451783}
   trChatView: {fileID: 8638016305678949038}
-  speechBubble: {fileID: 0}
-  text_speechBubble: {fileID: 0}
 --- !u!114 &5639014625695077292
 MonoBehaviour:
   m_ObjectHideFlags: 0
