@@ -25,7 +25,6 @@ public class SoundManager : MonoBehaviourPun
     public AudioMixer audioMixer;
     [SerializeField]
     float alarmVolume = 0.0f;
-    float alarmIncSize = 5.0f;
 
 
     private void Start()
@@ -33,6 +32,7 @@ public class SoundManager : MonoBehaviourPun
         AlarmManager.instance.onAlarmUI += AlarmSoundPlay;
         AlarmManager.instance.offAlarmUI += AlarmSoundStop;
         AlarmManager.instance.offAlarmUI += MonsterScreamSoundPlay;
+        AlarmManager.instance.offAlarmUI += ResetVolumeSize;
     }
     void AlarmSoundPlay(object sender, EventArgs e)
     {
@@ -72,5 +72,22 @@ public class SoundManager : MonoBehaviourPun
     public void MonsterScreamSoundPlay(object sender, EventArgs e)
     {
         monsterScreamSound.Play();
+    }
+
+    [PunRPC]
+    public void VolumeUp(float volumeSize)
+    {
+        if (audioMixer != null)
+        {
+            alarmVolume += volumeSize;
+            print(photonView.Owner.NickName + "님의 알람 볼륨이 커졌습니다: 현재 볼륨 " + alarmVolume);
+            audioMixer.SetFloat("AlarmVolume", alarmVolume);
+        }
+    }
+
+    public void ResetVolumeSize(object sender, EventArgs e)
+    {
+        alarmVolume = 0.0f;
+        audioMixer.SetFloat("AlarmVolume", alarmVolume);
     }
 }

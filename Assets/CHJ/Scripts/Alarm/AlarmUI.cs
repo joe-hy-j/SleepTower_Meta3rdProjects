@@ -14,6 +14,8 @@ public class AlarmUI : MonoBehaviourPunCallbacks
     public TMP_InputField hourInput;
     public TMP_InputField minuteInput;
 
+    public GameRoomManager roomManager;
+
     Coroutine alarmCoroutine;
 
     WaitForSeconds wfs1 = new WaitForSeconds(1);
@@ -87,11 +89,19 @@ public class AlarmUI : MonoBehaviourPunCallbacks
         AlarmManager.instance.SetAlarm(hour, minute);
     }
 
+    [PunRPC]
+    public void InitOnAlarm()
+    {
+        AlarmManager.instance.OnAlarm();
+    }
+
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
 
+        //방장만 이 함수를 호출할 수 있습니다.
         if (!photonView.IsMine) return;
+
         print(" new player entered room!");
 
         // 알람이 있으면!
@@ -99,7 +109,18 @@ public class AlarmUI : MonoBehaviourPunCallbacks
         {
             photonView.RPC(nameof(InitAlarm), newPlayer, AlarmManager.instance.GetAlarmByIndex(0).hour, AlarmManager.instance.GetAlarmByIndex(0).minute);
         }
+
+        // 만약 알람이 울리는 중에 들어왔으면...
+        if(AlarmManager.instance.IsAlarmOn)
+        {
+            StartCoroutine(InitAlarmProcess(newPlayer));
+        }
     }
 
+    IEnumerator InitAlarmProcess(Player newPlayer)
+    {
+        yield return new WaitForSeconds(1);
+        photonView.RPC(nameof(InitOnAlarm), newPlayer);
+    }
     
 }
