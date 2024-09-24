@@ -31,6 +31,8 @@ public class AlarmManager : MonoBehaviour
     public event EventHandler onAlarmUI;
     public event EventHandler offAlarmUI;
 
+    public bool IsAlarmOn { get; private set; }
+
     public static AlarmManager instance;
 
     void Awake()
@@ -141,11 +143,13 @@ public class AlarmManager : MonoBehaviour
     {
         if(onAlarmUI != null)
             onAlarmUI.Invoke(this, EventArgs.Empty);
+        IsAlarmOn = true;
     }
     
     public void OffAlarm()
     {
         if(offAlarmUI != null)  
             offAlarmUI.Invoke(this, EventArgs.Empty);
+        IsAlarmOn = false;
     }
 }

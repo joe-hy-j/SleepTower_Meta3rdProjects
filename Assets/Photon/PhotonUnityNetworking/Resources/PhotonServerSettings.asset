@@ -55,6 +55,14 @@ MonoBehaviour:
   - RpcActiveOnlyOneEmoge
   - RpcOffBubble
   - RpcOnSubmit
+  - VolumeUp
+  - InitOnAlarm
+  - SetNeedSleepCount
+  - RpcChangeSleepCount
+  - SetSleepCount
+  - RpcSetSleepBedDicValue
+  - SetDictionary
+  - SetPlayerSleep
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

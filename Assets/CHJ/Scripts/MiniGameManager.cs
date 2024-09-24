@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,9 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
     bool isMiniGameEnd = false;
     // 방장이 관리하는 변수: 미니 게임 끝낸 플레이어 수를 센다.
     int miniGameEndPlayerCount = 0;
-    
+
+    public Action OnMiniGameEnd;
+
     public enum GameType
     {
         None,
@@ -95,6 +98,9 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
 
         // 변수 올려주어야 한다. (RPCTarget.Master)
         photonView.RPC(nameof(EndPlayerCountUp), RpcTarget.MasterClient);
+
+        if(OnMiniGameEnd != null)
+            OnMiniGameEnd();
     }
 
     // 마스터에서만 실행되는 함수 현재 모든 플레이어가 게임을 끝냈는지 확인한다.
