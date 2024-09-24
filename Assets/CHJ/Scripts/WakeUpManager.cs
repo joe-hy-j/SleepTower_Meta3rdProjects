@@ -33,6 +33,7 @@ public class WakeUpManager : MonoBehaviour
         // 10초가 지나도 일어나지 않으면...
         // UI를 띄우자.
 
+
         //currentTime은 다시 0으로 맞춘다.
         currentTime = 0;
     }

@@ -113,14 +113,9 @@ public class AlarmUI : MonoBehaviourPunCallbacks
         // 만약 알람이 울리는 중에 들어왔으면...
         if(AlarmManager.instance.IsAlarmOn)
         {
-            StartCoroutine(InitAlarmProcess(newPlayer));
+            photonView.RPC(nameof(InitOnAlarm), newPlayer);
         }
     }
 
-    IEnumerator InitAlarmProcess(Player newPlayer)
-    {
-        yield return new WaitForSeconds(1);
-        photonView.RPC(nameof(InitOnAlarm), newPlayer);
-    }
     
 }
