@@ -63,6 +63,8 @@ MonoBehaviour:
   - RpcSetSleepBedDicValue
   - SetDictionary
   - SetPlayerSleep
+  - RpcVolumeUp
+  - SetSleepingPlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

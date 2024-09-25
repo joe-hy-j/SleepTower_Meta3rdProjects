@@ -68,6 +68,9 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
     //미니게임을 시작한다.
     public void StartMiniGame()
     {
+        // 알람이 울릴 때만 실행된다.
+        if (!AlarmManager.instance.IsAlarmOn) return;
+
         switch (gameType)
         {
             case GameType.MemoryGame:
@@ -94,7 +97,7 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
         isMiniGameEnd = true;
 
         //UI 변경
-        photonView.RPC(nameof(RpcOnePlayerEndGameUI), RpcTarget.All);
+        photonView.RPC(nameof(RpcOnePlayerEndGameUI), RpcTarget.All, PhotonNetwork.NickName);
 
         // 변수 올려주어야 한다. (RPCTarget.Master)
         photonView.RPC(nameof(EndPlayerCountUp), RpcTarget.MasterClient);
@@ -113,10 +116,10 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
 
     // 한명이 미니게임을 끝냈을 때 호출되는 함수, 한 명 UI만 바꿔준다.
     [PunRPC]
-    void RpcOnePlayerEndGameUI()
+    void RpcOnePlayerEndGameUI(string nickname)
     {
         // UI 변경 (RPCTarget.All)
-        print(photonView.Owner.NickName + "님이 미니게임을 끝냈습니다!");
+        print(nickname + "님이 미니게임을 끝냈습니다!");
     }
 
     // 모두가 미니게임을 끝냈는지 체크한다.

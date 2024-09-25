@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -74,13 +75,17 @@ public class SoundManager : MonoBehaviourPun
         monsterScreamSound.Play();
     }
 
+    public void VolumeUp(Player player)
+    {
+        photonView.RPC(nameof(RpcVolumeUp), player, 5.0f);
+    }
     [PunRPC]
-    public void VolumeUp(float volumeSize)
+    void RpcVolumeUp(float volumeSize)
     {
         if (audioMixer != null)
         {
             alarmVolume += volumeSize;
-            print(photonView.Owner.NickName + "님의 알람 볼륨이 커졌습니다: 현재 볼륨 " + alarmVolume);
+            print(PhotonNetwork.NickName + "님의 알람 볼륨이 커졌습니다: 현재 볼륨 " + alarmVolume);
             audioMixer.SetFloat("AlarmVolume", alarmVolume);
         }
     }

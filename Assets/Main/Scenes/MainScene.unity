@@ -1384,6 +1384,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2131692667}
+    - targetCorrespondingSourceObject: {fileID: 8466222085670997081, guid: fd2c4159ef50abe4697a18d80b6eab9f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2131692668}
   m_SourcePrefab: {fileID: 100100000, guid: fd2c4159ef50abe4697a18d80b6eab9f, type: 3}
 --- !u!1 &890876121
 GameObject:
@@ -2442,7 +2446,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "OOO\uB2D8\uC774 \uC7A0\uC5D0 \uB4E4\uC5C8\uC2B5\uB2C8\uB2E4."
+  m_text: "\uC870\uD604\uC9C4\uB2D8\uC774 \uC7A0\uC5D0 \uB4E4\uC5C8\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7b8452637692b624fa636f2883847344, type: 2}
   m_sharedMaterial: {fileID: 3020018970254538233, guid: 7b8452637692b624fa636f2883847344,
@@ -2744,7 +2748,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408495375}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3981,6 +3985,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1811003545}
+  - component: {fileID: 1811003546}
   m_Layer: 5
   m_Name: WakeUpUI
   m_TagString: Untagged
@@ -4009,6 +4014,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1811003546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811003544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09c50f6416f23d4d82d952e2fc6bb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wakeUpButton: {fileID: 728413691}
+  infoText: {fileID: 1291955041}
+  infoTextObject: {fileID: 1408495375}
 --- !u!1 &1910823253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4290543774481560240, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
@@ -5111,6 +5131,19 @@ MonoBehaviour:
   sceneViewId: 5
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2131692668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131692660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2b419b41afaab4e8b015567d103932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wakeUpUI: {fileID: 1811003546}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

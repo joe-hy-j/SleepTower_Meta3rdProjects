@@ -28,8 +28,9 @@ public class AlarmUI : MonoBehaviourPunCallbacks
     IEnumerator alarmOnCheckProcess() {
         while (true)
         {
-            if (AlarmManager.instance.alarmCount > 0)
+            if (AlarmManager.instance.alarmCount > 0 && roomManager.isSleepAll)
             {
+                // 모두 누워있으면
                 //알람이 울렸는지 체크합니다.
                 if (AlarmManager.instance.CheckAlarmOn(TimeManager.Time.Hour, TimeManager.Time.Minute))
                 {
@@ -79,6 +80,8 @@ public class AlarmUI : MonoBehaviourPunCallbacks
     /// </summary>
     public void DisableAlarm()
     {
+        // 알람이 울렸으면
+
         AlarmManager.instance.OffAlarm();
     }
 
@@ -92,6 +95,8 @@ public class AlarmUI : MonoBehaviourPunCallbacks
     [PunRPC]
     public void InitOnAlarm()
     {
+        // 모두 누웠으면
+
         AlarmManager.instance.OnAlarm();
     }
 
