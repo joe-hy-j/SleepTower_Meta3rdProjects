@@ -297,12 +297,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250267977}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.25, y: 1.25, z: -2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.25, y: -6.25, z: 2.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1238556583}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &261912038
 PrefabInstance:
@@ -512,13 +512,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5509884453921167803, guid: 16979ae150a42464bb73e1e1118a2d5b, type: 3}
+    - {fileID: 389813502357537360, guid: 16979ae150a42464bb73e1e1118a2d5b, type: 3}
+    - {fileID: 6699816106122148773, guid: 16979ae150a42464bb73e1e1118a2d5b, type: 3}
+    - {fileID: 2006872241961166850, guid: 16979ae150a42464bb73e1e1118a2d5b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5274830174411569377, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 407612430}
+    - targetCorrespondingSourceObject: {fileID: 5274830174411569377, guid: 16979ae150a42464bb73e1e1118a2d5b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 250267978}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4499197585503325479, guid: 16979ae150a42464bb73e1e1118a2d5b,
         type: 3}
@@ -3666,16 +3674,16 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2143779089093673822, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
+      insertIndex: 14
+      addedObject: {fileID: 1811003545}
+    - targetCorrespondingSourceObject: {fileID: 2143779089093673822, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
+        type: 3}
       insertIndex: -1
       addedObject: {fileID: 1638845811}
     - targetCorrespondingSourceObject: {fileID: 2143779089093673822, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1221267497}
-    - targetCorrespondingSourceObject: {fileID: 2143779089093673822, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1811003545}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 837431370801494877, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
         type: 3}
@@ -5159,4 +5167,3 @@ SceneRoots:
   - {fileID: 1709624965}
   - {fileID: 1060202368}
   - {fileID: 648052228}
-  - {fileID: 250267978}

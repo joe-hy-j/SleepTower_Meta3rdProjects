@@ -19,7 +19,9 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
     public GameObject btn_ChatOff;  // 채팅 비활성화 버튼
 
     public Transform spawnCenter;
+    [HideInInspector]
     public GameObject myPlayer;
+    [HideInInspector]
     public EmogeSystem myEmoge;
 
 
@@ -50,6 +52,7 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
         // 현재 자는 인원 수가 0 보다 작아질 경우 0 으로 보정
         else
         {
+            isSleepAll = false;
             if (sleepCount < 0)
             {
                 sleepCount = 0;

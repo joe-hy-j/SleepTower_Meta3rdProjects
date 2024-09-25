@@ -1,16 +1,14 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PhotoSelect : MonoBehaviour
+public class PhotoSelect : MonoBehaviourPun
 {
     public GameObject photoSelecter;
     public GameObject imageSlot;
-    public Sprite image1;
-    public Sprite image2;
-    public Sprite image3;
-    public Sprite image4;
+    public Sprite[] images;
     Image image;
 
 
@@ -26,22 +24,28 @@ public class PhotoSelect : MonoBehaviour
 
     public void ImageUpload1()
     {
-        image.sprite = image1;
+        photonView.RPC(nameof(RpcImageUpload), RpcTarget.All, 0);
     }
-
+    
     public void ImageUpload2()
     {
-        image.sprite = image2;
+        photonView.RPC(nameof(RpcImageUpload), RpcTarget.All, 1);
     }
 
     public void ImageUpload3()
     {
-        image.sprite = image3;
+        photonView.RPC(nameof(RpcImageUpload), RpcTarget.All, 2);
     }
 
     public void ImageUpload4()
     {
-        image.sprite = image4;
+        photonView.RPC(nameof(RpcImageUpload), RpcTarget.All, 3);
+    }
+
+    [PunRPC]
+    void RpcImageUpload(int index)
+    {
+        image.sprite = images[index];
     }
 
     public void OnSelecter()

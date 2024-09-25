@@ -80,12 +80,4 @@ public class SleepBed : MonoBehaviour
 
         isSleeping = false;
     }
-
-    private void OnDestroy()
-    {
-        if (isSleeping)
-        {
-            grm.ChangeSleepCount(-1);
-        }
-    }
 }

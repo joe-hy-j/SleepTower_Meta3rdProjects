@@ -1,14 +1,13 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardManager : MonoBehaviour
+public class BoardManager : MonoBehaviourPun
 {
     public GameObject btn_Board;
     public GameObject highLight;
     public GameObject boardUI;
-    public GameObject postIt;
-    public GameObject photo;
     public RectTransform slots;
     int postCount;
     int photoCount;
@@ -27,8 +26,11 @@ public class BoardManager : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            highLight.SetActive(true);
-            btn_Board.SetActive(true);
+            if (other.gameObject.GetPhotonView().IsMine)
+            {
+                highLight.SetActive(true);
+                btn_Board.SetActive(true);
+            }
         }
     }
 
@@ -36,8 +38,11 @@ public class BoardManager : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            highLight.SetActive(false);
-            btn_Board.SetActive(false);
+            if (other.gameObject.GetPhotonView().IsMine)
+            {
+                highLight.SetActive(false);
+                btn_Board.SetActive(false);
+            }
         }
     }
 
@@ -56,13 +61,14 @@ public class BoardManager : MonoBehaviour
     {
         postCount++;
         if (postCount > 4) return;
-        Instantiate(postIt, slots);
+        PhotonNetwork.Instantiate("PostIt", Vector3.zero, Quaternion.identity);
     }
 
     public void AddPhoto()
     {
         photoCount++;
         if (photoCount > 4) return;
-        Instantiate(photo, slots);
+        PhotonNetwork.Instantiate("Photo", Vector3.zero, Quaternion.identity);
     }
+
 }

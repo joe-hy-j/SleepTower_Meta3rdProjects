@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviourPun
             {
                 Vector3 dir = transform.forward;  // 자신의 앞쪽 방향으로
 
-                anim.SetBool("IsRun", true);
+                photonView.RPC(nameof(RpcSetBool), RpcTarget.All,"IsRun",true);
 
                 // 지상에 닿아있을 경우 yVelocity값 초기화
                 if (cc.isGrounded)
@@ -54,7 +54,7 @@ public class PlayerMove : MonoBehaviourPun
             }
             else
             {
-                anim.SetBool("IsRun", false);
+                photonView.RPC(nameof(RpcSetBool), RpcTarget.All, "IsRun", false);
             }
         }
     }
@@ -67,5 +67,11 @@ public class PlayerMove : MonoBehaviourPun
     public void SetWakeUp()
     {
         isLying = false;
+    }
+
+    [PunRPC]
+    void RpcSetBool(string name, bool value)
+    {
+        anim.SetBool(name, value);
     }
 }
