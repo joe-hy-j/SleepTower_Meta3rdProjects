@@ -57,10 +57,17 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
         }
 
         // 자는 인원이 필요한 인원수에 충족할 경우
-        if(isSleepAll)
+        if(isSleepAll )
         {
-            //sleepCount = 0;
-            img_TimerUI.SetActive(true);  // 알람 UI 활성화
+            if (AlarmManager.instance.alarmCount > 0)
+            {
+                //sleepCount = 0;
+                img_TimerUI.SetActive(true);  // 알람 UI 활성화
+            }
+            else
+            {
+                print("알람이 없습니다... 알람을 세팅해주세요");
+            }
         }
 
         print(sleepCount+"/"+needSleepCount);

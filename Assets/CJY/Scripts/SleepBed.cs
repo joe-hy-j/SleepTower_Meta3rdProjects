@@ -53,7 +53,7 @@ public class SleepBed : MonoBehaviour
     public void Sleeping()
     {
         grm.ChangeSleepCount(1);  // 현재 자는 인원수 1 증가
-        pm.moveSpeed = 0;  // 플레이어의 움직임을 멈춘다
+        pm.SetLying(); // 못움직이게 만든다.
 
         player.transform.position = sleepPos.position;
         player.transform.rotation = sleepPos.rotation;
@@ -74,7 +74,7 @@ public class SleepBed : MonoBehaviour
         player.transform.rotation = wakePos.rotation;
 
         btn_wakeUp.SetActive(false);  // 기상 버튼 비활성화
-        pm.moveSpeed = 5;  // 플레이어 움직임 정상화
+        pm.SetWakeUp();
 
         BedManager.instance.SetSleepBedDicValue(gameObject.name, false);
 

@@ -14,6 +14,8 @@ public class PlayerMove : MonoBehaviourPun
     float gravity = -9.8f;  // 중력
     float yVelocity;  // y속력
 
+    // 누워있는 상태인가
+    bool isLying = false;
 
     private void Start()
     {
@@ -25,6 +27,9 @@ public class PlayerMove : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
+
+            // 만약 현재 잠든 상태라면
+            if (isLying) return;
             // 조이스틱에 상하/좌우로 움직임이 있을 경우
             if (joystick.Vertical != 0 || joystick.Horizontal != 0)
             {
@@ -52,5 +57,15 @@ public class PlayerMove : MonoBehaviourPun
                 anim.SetBool("IsRun", false);
             }
         }
+    }
+
+    public void SetLying()
+    {
+        isLying = true;
+    }
+
+    public void SetWakeUp()
+    {
+        isLying = false;
     }
 }
