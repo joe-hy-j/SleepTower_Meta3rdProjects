@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6946375135158219582}
   - component: {fileID: 4210955180217883965}
   - component: {fileID: 8345051836742755314}
+  - component: {fileID: 8736753642816380543}
   m_Layer: 5
   m_Name: PlayerCanvas
   m_TagString: Untagged
@@ -178,6 +179,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechBubble: {fileID: 5163654148921876614}
   text_speechBubble: {fileID: 6169459813835033313}
+--- !u!114 &8736753642816380543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439486349234124666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd5285838848b84ba7bf62701febb02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nicknameText: {fileID: 6893988673624275382}
 --- !u!1 &1583553484874740333
 GameObject:
   m_ObjectHideFlags: 0

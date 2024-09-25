@@ -373,6 +373,8 @@ GameObject:
   - component: {fileID: 2364821918824042041}
   - component: {fileID: 6331110610427886021}
   - component: {fileID: 2765682946654776487}
+  - component: {fileID: -5635518095639467992}
+  - component: {fileID: 6860492856914989234}
   m_Layer: 5
   m_Name: PostIt
   m_TagString: Untagged
@@ -461,6 +463,32 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-5635518095639467992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819521872079683132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237c82678f7298f4cb332a87cc3c2893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentName: Slots
+--- !u!114 &6860492856914989234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819521872079683132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c543986531f61459912e42fa0bc2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  postitInput: {fileID: 8193156611017713049}
 --- !u!1 &6086525067895641020
 GameObject:
   m_ObjectHideFlags: 0
