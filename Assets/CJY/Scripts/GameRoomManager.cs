@@ -92,7 +92,7 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
         needSleepCount = PhotonNetwork.CurrentRoom.PlayerCount;
         // needSleepCount정보를 보내준다.
         photonView.RPC(nameof(SetSleepCount), RpcTarget.All, needSleepCount, sleepCount, isSleepAll);
-        if (isSleepAll)
+        if (isSleepAll && AlarmManager.instance.alarmCount > 0)
         {
             photonView.RPC(nameof(SetPlayerSleep), newPlayer);
         }

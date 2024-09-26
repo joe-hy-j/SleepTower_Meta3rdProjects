@@ -55,4 +55,18 @@ public class InputOutputFileManager : MonoBehaviour
         }
     }
 
+    public void WriteFile(string s)
+    {
+        if (File.Exists(path))
+        {
+            // 파일 내용을 읽어오기
+            File.WriteAllText(path, s);
+            Debug.Log(s); // 콘솔에 내용 출력
+        }
+        else
+        {
+            Debug.LogError("파일이 존재하지 않습니다: " + path);
+        }
+    }
+
 }

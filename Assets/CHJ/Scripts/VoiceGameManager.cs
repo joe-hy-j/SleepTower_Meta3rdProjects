@@ -30,7 +30,7 @@ public class VoiceGameManager : MonoBehaviour
     public void SetUIInterface()
     {
         infoText = Instantiate(textFactory, GameObject.Find("GameCanvas").transform).GetComponent<Text>();
-        infoText.text = "검정색 화면에 뜬 지시를 따라주세요...";
+        infoText.text = "화면의 지시를 따라주세요...";
         StartGame();
     }
 
@@ -41,6 +41,7 @@ public class VoiceGameManager : MonoBehaviour
 
     void EndGame()
     {
+        InputOutputFileManager.GetInstance().WriteFile("");
         Destroy(infoText.gameObject);
         MiniGameManager.instance.MiniGameEnd();
     }

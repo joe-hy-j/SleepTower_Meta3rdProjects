@@ -60,6 +60,7 @@ public class AlarmUI : MonoBehaviourPunCallbacks
         {
             // UI에 방장만 알람을 설정할 수 있습니다 띄우기
             Debug.LogError("방장만 알람을 설정할 수 있습니다");
+            ToastExample.instance.ShowToast("방장만 알람을 설정할 수 있습니다");
             // return;
             return;
         }

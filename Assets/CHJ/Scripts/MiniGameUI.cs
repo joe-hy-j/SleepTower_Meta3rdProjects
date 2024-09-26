@@ -12,13 +12,14 @@ public class MiniGameUI : MonoBehaviour
     public Button memorySelectBtn;
     public Button pillowSelectBtn;
     public Button mediaPipeSelectBtn;
+    public Button voiceSelectBtn;
     public Button alarmSetBtn;
 
     MiniGameManager.GameType selectedGameType;
 
     private void Start()
     {
-        memorySelectBtn.onClick.AddListener( () =>{
+        memorySelectBtn.onClick.AddListener(() => {
             selectedGameType = MiniGameManager.GameType.MemoryGame;
         });
         pillowSelectBtn.onClick.AddListener(() =>
@@ -30,6 +31,11 @@ public class MiniGameUI : MonoBehaviour
             selectedGameType = MiniGameManager.GameType.MediaPipeGame;
         });
 
+        voiceSelectBtn.onClick.AddListener(() =>
+        {
+            selectedGameType = MiniGameManager.GameType.VoiceGame;
+        });
+
         alarmSetBtn.onClick.AddListener(() =>
         {
             // 방장만 게임을 설정할 수 있습니다.
@@ -38,7 +44,10 @@ public class MiniGameUI : MonoBehaviour
             if (selectedGameType != MiniGameManager.GameType.None)
                 MiniGameManager.instance.SetGameType(selectedGameType);
             else
+            {
                 Debug.LogError("Game Type이 결정되지 않았습니다.");
+                ToastExample.instance.ShowToast("게임 종류가 결정되지 않았어요!");
+            }
         });
     }
 }

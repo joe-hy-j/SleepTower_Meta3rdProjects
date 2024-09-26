@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class MiniGameManager : MonoBehaviourPunCallbacks
 {
@@ -16,6 +17,7 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
     public MemoryGameUIManager memoryGM;
     public PillowGameManager pillowGM;
     public MediaPipeGameManager mediaPipeGM;
+    public VoiceGameManager voiceGM;
 
     // 내 플레이어가 미니게임을 끝냈는지 체크
     bool isMiniGameEnd = false;
@@ -27,14 +29,16 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
     public GameObject allClearImage;
     public GameObject myClearImage;
 
-    public GameObject clearVideo;
+    public VideoPlayer clearVideo;
+    public GameObject videoImage;
 
     public enum GameType
     {
         None,
         MemoryGame,
         PillowGame,
-        MediaPipeGame
+        MediaPipeGame,
+        VoiceGame
     }
 
     GameType gameType;
@@ -90,6 +94,9 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
             case GameType.MediaPipeGame:
                 //MediaPipe Game Manager를 실행한다.
                 mediaPipeGM.SetUIInterface();
+                break;
+            case GameType.VoiceGame:
+                voiceGM.SetUIInterface();
                 break;
             default:
                 break;
@@ -171,6 +178,10 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
 
     IEnumerator MyClearUIProcess()
     {
+        videoImage.SetActive(true);
+        clearVideo.Play();
+        yield return new WaitForSeconds(5.0f);
+        videoImage.SetActive(false);
         myClearImage.SetActive(true);
         yield return new WaitForSeconds(3.0f);
         myClearImage.SetActive(false);
