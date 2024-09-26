@@ -3,6 +3,7 @@ using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,11 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
     int miniGameEndPlayerCount = 0;
 
     public Action OnMiniGameEnd;
+
+    public GameObject allClearImage;
+    public GameObject myClearImage;
+
+    public GameObject clearVideo;
 
     public enum GameType
     {
@@ -96,14 +102,18 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
     {
         isMiniGameEnd = true;
 
-        //UI 변경
-        photonView.RPC(nameof(RpcOnePlayerEndGameUI), RpcTarget.All, PhotonNetwork.NickName);
+        ////UI 변경
+        //photonView.RPC(nameof(RpcOnePlayerEndGameUI), RpcTarget.All, PhotonNetwork.NickName);
 
         // 변수 올려주어야 한다. (RPCTarget.Master)
         photonView.RPC(nameof(EndPlayerCountUp), RpcTarget.MasterClient);
 
         if(OnMiniGameEnd != null)
             OnMiniGameEnd();
+
+        AlarmManager.instance.OffAlarm();
+
+        StartCoroutine(MyClearUIProcess());
     }
 
     // 마스터에서만 실행되는 함수 현재 모든 플레이어가 게임을 끝냈는지 확인한다.
@@ -129,7 +139,8 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
         {
             // 모두가 게임을 끝냈다
             // 모두의 알람을 끄는 함수를 실행하자.
-            photonView.RPC(nameof(RpcEndAlarm), RpcTarget.All);
+            //photonView.RPC(nameof(RpcEndAlarm), RpcTarget.All);
+            photonView.RPC(nameof(RpcAllClearUIOn), RpcTarget.All);
             // 모두의 isMiniGameEnd = false로 바꿔주자
         }
     }
@@ -145,9 +156,23 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
         print(PhotonNetwork.NickName + "님의 알람이 꺼졌습니다!");
     }
 
-    // 내가 만약 미니게임이 끝났을 때, 상대방의 볼륨을 올릴 수 있게 하는 함수
-    public void OtherPlayerVolumeUp()
+    [PunRPC]
+    void RpcAllClearUIOn()
     {
+        StartCoroutine(AllEndUIProcess());
+    }
 
+    IEnumerator AllEndUIProcess()
+    {
+        allClearImage.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
+        allClearImage.SetActive(false);
+    }
+
+    IEnumerator MyClearUIProcess()
+    {
+        myClearImage.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
+        myClearImage.SetActive(false);
     }
 }

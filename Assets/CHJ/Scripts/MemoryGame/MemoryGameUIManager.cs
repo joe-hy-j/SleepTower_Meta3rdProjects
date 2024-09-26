@@ -110,14 +110,14 @@ public class MemoryGameUIManager : MemoryGameManager
         base.EndGame();
         MiniGameManager.instance.MiniGameEnd();
         RemoveAllBlocks();
-        StartCoroutine(ShowTextProcess(1));
+        Destroy(winText.gameObject);
     }
 
     IEnumerator ShowTextProcess(float seconds)
     {
         winText.gameObject.SetActive(true);
         yield return new WaitForSeconds(seconds);
-        Destroy(winText.gameObject);
+  
     }
     void RemoveAllBlocks()
     {

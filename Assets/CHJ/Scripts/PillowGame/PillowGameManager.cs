@@ -176,7 +176,8 @@ public class PillowGameManager : MonoBehaviour
     void EndGame()
     {
         MiniGameManager.instance.MiniGameEnd();
-        StartCoroutine(EndGameProcess());
+        Destroy(timeText.gameObject);
+        Destroy(removeColorText.gameObject);
     }
     
     void RemovePillows()
@@ -194,13 +195,8 @@ public class PillowGameManager : MonoBehaviour
         StartGame();
     }
 
-    IEnumerator EndGameProcess()
-    {
-        timeText.text = "게임 종료...";
-        yield return new WaitForSeconds(1);
-        Destroy(timeText.gameObject);
-        Destroy(removeColorText.gameObject);
-    }
+
+
 
     public void OnClick()
     {
