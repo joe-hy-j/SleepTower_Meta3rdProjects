@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: video
+    uniqueID: 3089460099
+    locked: 0
