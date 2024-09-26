@@ -10,7 +10,6 @@ public class MediaPipeGameManager : MonoBehaviour
     GestureData gesture;
     GestureData answerGesture;
 
-    public GameObject buttonFactory;
     public GameObject textFactory;
 
     bool isGameStart =false;
@@ -80,19 +79,10 @@ public class MediaPipeGameManager : MonoBehaviour
     {
         isGameStart = false;
         MiniGameManager.instance.MiniGameEnd();
-        StartCoroutine(EndProcess());
-    }
-
-    IEnumerator EndProcess()
-    {
-        infoText.text = "게임 종료...";  
-
-        yield return new WaitForSeconds(2);
-
         // UI를 없앤다
         Destroy(infoText.gameObject);
-
     }
+
     public void SetGestureData(GestureData gesture)
     {
         this.gesture = gesture;

@@ -1396,6 +1396,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2131692668}
+    - targetCorrespondingSourceObject: {fileID: 8466222085670997081, guid: fd2c4159ef50abe4697a18d80b6eab9f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2131692670}
   m_SourcePrefab: {fileID: 100100000, guid: fd2c4159ef50abe4697a18d80b6eab9f, type: 3}
 --- !u!1 &890876121
 GameObject:
@@ -2227,6 +2231,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190258807}
   m_CullTransparentMesh: 1
+--- !u!1 &1207191276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207191278}
+  - component: {fileID: 1207191277}
+  m_Layer: 0
+  m_Name: FileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1207191277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207191276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d23a9e95c222de419eb1cd9d6a458d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: C:\Users\jogat\Downloads\temp_1727242469349.-677587863\result.json
+  content: 
+--- !u!4 &1207191278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207191276}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 195, y: 776, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1210861147 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 436173850093080389, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,
@@ -5101,6 +5151,9 @@ MonoBehaviour:
   memoryGM: {fileID: 2131692664}
   pillowGM: {fileID: 2131692663}
   mediaPipeGM: {fileID: 2131692666}
+  allClearImage: {fileID: 0}
+  myClearImage: {fileID: 0}
+  clearVideo: {fileID: 0}
 --- !u!114 &2131692666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5113,8 +5166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87464ea73d749a34bbfed7f5a0b4175a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonFactory: {fileID: 3451716587145322387, guid: 6a49b0868c6f0674f9d940aeb7f155b6,
-    type: 3}
   textFactory: {fileID: 3726959435717578243, guid: e3f10a4aff7c6704fbd2110506815d55,
     type: 3}
 --- !u!114 &2131692667
@@ -5152,6 +5203,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wakeUpUI: {fileID: 1811003546}
+--- !u!114 &2131692670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131692660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349275d669e7229418d663b799602d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textFactory: {fileID: 3726959435717578243, guid: e3f10a4aff7c6704fbd2110506815d55,
+    type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5167,3 +5232,4 @@ SceneRoots:
   - {fileID: 1709624965}
   - {fileID: 1060202368}
   - {fileID: 648052228}
+  - {fileID: 1207191278}
