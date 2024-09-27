@@ -34,7 +34,9 @@ public class LobbyUIMGR : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-  
+
+        if (LobbySceneLoadCount.instance.IsLobbySceneLoaded())
+            PopUpUiCanvas.SetActive(false);
         // 최대페이지
         maxPage = (myList.Count % CellBtn.Length == 0) ? myList.Count / CellBtn.Length : myList.Count / CellBtn.Length + 1;
 

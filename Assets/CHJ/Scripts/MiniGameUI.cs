@@ -36,18 +36,20 @@ public class MiniGameUI : MonoBehaviour
             selectedGameType = MiniGameManager.GameType.VoiceGame;
         });
 
-        alarmSetBtn.onClick.AddListener(() =>
-        {
-            // 방장만 게임을 설정할 수 있습니다.
-            if (!PhotonNetwork.IsMasterClient) { return; }
+    }
 
-            if (selectedGameType != MiniGameManager.GameType.None)
-                MiniGameManager.instance.SetGameType(selectedGameType);
-            else
-            {
-                Debug.LogError("Game Type이 결정되지 않았습니다.");
-                ToastExample.instance.ShowToast("게임 종류가 결정되지 않았어요!");
-            }
-        });
+    public bool MiniGameSet()
+    {
+        if(selectedGameType != MiniGameManager.GameType.None)
+        {
+            MiniGameManager.instance.SetGameType(selectedGameType);
+            return true;
+        }
+        else
+        {
+            Debug.LogError("Game Type이 결정되지 않았습니다.");
+            ToastExample.instance.ShowToastMessage("게임 종류가 결정되지 않았어요!");
+            return false;
+        }
     }
 }

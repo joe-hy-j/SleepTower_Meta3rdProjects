@@ -171,6 +171,7 @@ public class GameRoomManager : MonoBehaviourPunCallbacks
     {
         //PhotonNetwork.LoadLevel("LobbyScene");
         //SceneManager.LoadScene("LobbyScene");
+        LobbySceneLoadCount.instance.LobbySceneIsLoaded();
         PhotonNetwork.LeaveRoom();
     }
 

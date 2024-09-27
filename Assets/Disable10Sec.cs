@@ -9,6 +9,11 @@ public class Disable10Sec : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(LobbySceneLoadCount.instance.IsLobbySceneLoaded())
+        {
+            target.SetActive(false);
+            return;
+        }
         StartCoroutine(DisableProcess(10.0f));   
     }
 

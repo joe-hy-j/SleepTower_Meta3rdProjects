@@ -15,6 +15,7 @@ public class AlarmUI : MonoBehaviourPunCallbacks
     public TMP_InputField minuteInput;
 
     public GameRoomManager roomManager;
+    public MiniGameUI gameUI;
 
     Coroutine alarmCoroutine;
 
@@ -60,11 +61,23 @@ public class AlarmUI : MonoBehaviourPunCallbacks
         {
             // UI에 방장만 알람을 설정할 수 있습니다 띄우기
             Debug.LogError("방장만 알람을 설정할 수 있습니다");
-            ToastExample.instance.ShowToast("방장만 알람을 설정할 수 있습니다");
+            ToastExample.instance.ShowToastMessage("방장만 알람을 설정할 수 있습니다",ToastLength.Short);
             // return;
             return;
         }
-        photonView.RPC(nameof(RpcAddAlarm), RpcTarget.All, Convert.ToInt32(hourInput.text), Convert.ToInt32(minuteInput.text));
+        if (hourInput.text != "" && minuteInput.text != "")
+        {
+            if (gameUI.MiniGameSet())
+            {
+                photonView.RPC(nameof(RpcAddAlarm), RpcTarget.All, Convert.ToInt32(hourInput.text), Convert.ToInt32(minuteInput.text));
+                ToastExample.instance.ShowToastMessage("알람이 설정되었습니다.");
+            }
+        }
+        else
+        {
+            ToastExample.instance.ShowToastMessage("알람 시간을 설정해주세요");
+            Debug.Log("알람 시간을 설정해주세요");
+        }
     }
 
     [PunRPC]

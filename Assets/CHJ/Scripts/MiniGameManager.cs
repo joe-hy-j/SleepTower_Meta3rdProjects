@@ -19,8 +19,6 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
     public MediaPipeGameManager mediaPipeGM;
     public VoiceGameManager voiceGM;
 
-    // 내 플레이어가 미니게임을 끝냈는지 체크
-    bool isMiniGameEnd = false;
     // 방장이 관리하는 변수: 미니 게임 끝낸 플레이어 수를 센다.
     int miniGameEndPlayerCount = 0;
 
@@ -108,8 +106,6 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
     // 미니 게임이 끝났을 때 실행되어야 하는 함수
     public void MiniGameEnd()
     {
-        isMiniGameEnd = true;
-
         ////UI 변경
         //photonView.RPC(nameof(RpcOnePlayerEndGameUI), RpcTarget.All, PhotonNetwork.NickName);
 
@@ -150,14 +146,13 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
             //photonView.RPC(nameof(RpcEndAlarm), RpcTarget.All);
             photonView.RPC(nameof(RpcAllClearUIOn), RpcTarget.All);
             // 모두의 isMiniGameEnd = false로 바꿔주자
+            miniGameEndPlayerCount = 0;
         }
     }
     // 알람을 끄고, UI를 끈다.
     [PunRPC]
     void RpcEndAlarm()
     {
-        // 변수 초기화하자
-        isMiniGameEnd = false;
         // 알람을 끈다.
         AlarmManager.instance.OffAlarm();
         // UI를 끈다.
