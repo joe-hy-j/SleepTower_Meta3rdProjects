@@ -138,7 +138,7 @@ public class PillowGameManager : MonoBehaviour
     //배게를 생성한다.
     void CreatePillow(PillowType color)
     {
-        Pillow newPillow = new Pillow(color, Instantiate(pillowFactory, new Vector3(Random.Range(-2.0f, 2.0f),pillowFactory.transform.localScale.z/2 + 2.0f,Random.Range(-2.0f,2.0f)),Quaternion.Euler(90,0,0)));
+        Pillow newPillow = new Pillow(color, Instantiate(pillowFactory, new Vector3(Random.Range(-4.0f, 4.0f),pillowFactory.transform.localScale.z/2 + 2.0f,Random.Range(-4.0f,4.0f)),Quaternion.Euler(90,0,0)));
         newPillow.pillow.GetComponent<Renderer>().material = mat[(int)color];
         pillows.Add(newPillow);
     }

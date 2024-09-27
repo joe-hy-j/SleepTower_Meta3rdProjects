@@ -33,7 +33,7 @@ public class MonsterMove : MonoBehaviour
         }
 
         anim = GetComponent<Animator>();
-        MiniGameManager.instance.OnMiniGameEnd += MonsterJumpDown;
+        MiniGameManager.instance.OnVideoEnd += MonsterJumpDown;
     }
 
     void Update()

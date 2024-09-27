@@ -206,7 +206,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 81927339}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2131692670}
+        m_TargetAssemblyTypeName: VoiceGameManager, Assembly-CSharp
+        m_MethodName: SetUIInterface
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1638845809}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &81927339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,6 +972,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MediaPipeGameManager, Assembly-CSharp
         m_MethodName: SetUIInterface
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1638845809}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1809,7 +1845,7 @@ MonoBehaviour:
   interestGroup: 0
   useTargetPlayers: 0
   targetPlayers: 
-  debugEchoMode: 1
+  debugEchoMode: 0
   reliableMode: 0
   encrypt: 0
   transmitEnabled: 1
@@ -2029,6 +2065,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MemoryGameUIManager, Assembly-CSharp
         m_MethodName: SetUIInterface
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1638845809}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2267,6 +2315,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1638845809}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1190258810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2334,7 +2394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d23a9e95c222de419eb1cd9d6a458d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: C:\Users\jogat\Downloads\temp_1727242469349.-677587863\result.json
+  path: C:\Users\Admin\Desktop\SleepTower_project\stt_module\result.json
   content: 
 --- !u!4 &1207191278
 Transform:
@@ -3085,7 +3145,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 571}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1500, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559797326
@@ -4122,6 +4182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cheatCanvas: {fileID: 1638845809}
+  monsterMove: {fileID: 261912039}
 --- !u!114 &1704779105 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6560131427353801306, guid: 6eee6e4884d92a54f9ae9c6c02b32ea9,

@@ -25,6 +25,7 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
     int miniGameEndPlayerCount = 0;
 
     public Action OnMiniGameEnd;
+    public Action OnVideoEnd;
 
     public GameObject allClearImage;
     public GameObject myClearImage;
@@ -171,6 +172,12 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
 
     IEnumerator AllEndUIProcess()
     {
+        videoImage.SetActive(true);
+        clearVideo.Play();
+        yield return new WaitForSeconds(5.0f);
+        videoImage.SetActive(false);
+        if(OnVideoEnd != null)
+            OnVideoEnd();
         allClearImage.SetActive(true);
         yield return new WaitForSeconds(3.0f);
         allClearImage.SetActive(false);
@@ -178,10 +185,6 @@ public class MiniGameManager : MonoBehaviourPunCallbacks
 
     IEnumerator MyClearUIProcess()
     {
-        videoImage.SetActive(true);
-        clearVideo.Play();
-        yield return new WaitForSeconds(5.0f);
-        videoImage.SetActive(false);
         myClearImage.SetActive(true);
         yield return new WaitForSeconds(3.0f);
         myClearImage.SetActive(false);
