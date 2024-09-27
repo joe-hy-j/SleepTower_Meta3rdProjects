@@ -22,7 +22,8 @@ public class MemoryGameUIManager : MemoryGameManager
     {
         winText = Instantiate(textFactory, GameObject.Find("GameCanvas").transform).GetComponent<Text>();
         winText.gameObject.SetActive(false);
-        winText.text = "게임 종료...";
+        winText.text = "색깔을 기억하세요!";
+        StartCoroutine(ShowTextProcess(1.0f));
         StartGame();
     }
     //게임 시작하는 함수
@@ -117,7 +118,7 @@ public class MemoryGameUIManager : MemoryGameManager
     {
         winText.gameObject.SetActive(true);
         yield return new WaitForSeconds(seconds);
-  
+        winText.gameObject.SetActive(false);
     }
     void RemoveAllBlocks()
     {
@@ -128,12 +129,12 @@ public class MemoryGameUIManager : MemoryGameManager
     }
     float ColomnToXPos(int column)
     {
-        return (column - 1) * 1.3f;
+        return (column - 1) * 2.3f;
     }
 
     float RowToZPos(int row)
     {
-        return (1 - row) * 1.3f;
+        return (1 - row) * 2.3f;
     }
 
     IEnumerator QuestioinShowProcess(float showingTime)

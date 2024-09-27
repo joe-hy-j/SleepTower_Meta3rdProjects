@@ -24,23 +24,12 @@ public class LobbyUIMGR : MonoBehaviour
     public GameObject img4;
     public Button btn4;
 
-    public VideoPlayer player;
+    public GameObject PopUpUiCanvas;
 
 
     bool createComplete = false;
 
     int currentPage = 1, maxPage, multiple;
-
-
-    private void Awake()
-    {
-        if (player != null)
-        {
-            player.Play();
-        }
-
-        gameObject.SetActive(false);
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -114,6 +103,7 @@ public class LobbyUIMGR : MonoBehaviour
     {
         btn4.interactable = false;
         img4.SetActive(false);
+        PopUpUiCanvas.SetActive(false);
     }
 
 
